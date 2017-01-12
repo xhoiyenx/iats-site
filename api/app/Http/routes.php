@@ -11,6 +11,8 @@
 |
 */
 
+use Model\Member;
 $app->get('/', function () use ($app) {
-    return $app->version();
+  var_dump(new Member);
+  return $app->version();
 });
