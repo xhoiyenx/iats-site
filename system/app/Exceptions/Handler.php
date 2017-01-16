@@ -50,9 +50,9 @@ class Handler extends ExceptionHandler
          */
         if ($request->server('HTTP_HOST') == env('API_URL', 'api.iats.app')) {
             $response = [
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ];
-            return response()->json($response, $e->getStatusCode());
+            return response()->json($response, 401);
         }
         /**
          * Handle error

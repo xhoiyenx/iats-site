@@ -7,21 +7,20 @@ Route::get('/', function () {
  * API for USER
  */
 $group = [
-  'prefix' => 'user'
-  'namespace' => 'User'
+  'prefix' => 'user',
 ];
 Route::group($group, function ($router) {
 
   # ACCOUNT
   ############################################
   # USER login
-  Route::get('login');
+  Route::get('login', 'UserController@login');
 
   # USER registration
-  Route::get('register');
+  Route::post('register', 'UserController@register');
 
   # USER forgot password
-  Route::get('forgot-password');
+  Route::get('forgot-password', 'UserController@forgotPassword');
 
   # PROFILE
   ############################################

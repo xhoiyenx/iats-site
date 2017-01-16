@@ -17,9 +17,14 @@ class SystemController extends Controller {
 
       $table->increments('member_id');
       $table->string('username', 50)->unique();
-      $table->string('password', 60);
-      $table->string('email', 60);
-      $table->string('mobile', 20);
+      $table->string('password', 32);
+      $table->string('usermail', 60);
+      $table->string('usercell', 20);
+      $table->string('lat', 15)->nullable();
+      $table->string('lng', 15)->nullable();
+      $table->string('token', 32);
+      $table->string('fcmtoken', 100)->nullable();
+      $table->char('status', 1)->default(1);
       $table->timestamps();
 
       /*
