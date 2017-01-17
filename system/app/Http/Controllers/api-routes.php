@@ -63,6 +63,9 @@ Route::group($group, function ($router) {
   # BLOG like
   Route::get('like/{blog_id}');
 
+  # BLOG send
+  Route::post('post');
+
   # COMMENTS
   ############################################
   # COMMENT detail
