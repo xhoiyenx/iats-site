@@ -31,6 +31,7 @@ class RouteServiceProvider extends ServiceProvider
         $group = [
             'namespace'     => 'App\Http\Controllers\Manager',
             'middleware'    => 'web',
+            'prefix'        => 'manager'
         ];
         $router->group($group, function ($router) {
             require app_path('Http/Controllers/manager-routes.php');
