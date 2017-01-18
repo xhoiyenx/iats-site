@@ -1,9 +1,10 @@
 <?php
 namespace Model;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Member extends Model {
+class Member extends Authenticatable {
 
+  protected $primaryKey = 'member_id';
   protected $hidden = ['password'];
 
   /**

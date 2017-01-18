@@ -19,7 +19,6 @@ class RouteServiceProvider extends ServiceProvider
          */
         $group = [
             'namespace'     => 'App\Http\Controllers\Api',
-            'middleware'    => 'api',
             'domain'        => env('API_URL', 'api.iats.app')
         ];
         $router->group($group, function ($router) {

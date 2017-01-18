@@ -62,7 +62,7 @@ class UserController extends Controller {
       $member->password = $password;
       $member->usermail = $usermail;
       $member->usercell = $usercell;
-      $member->token = md5($username);
+      $member->api_token = md5($username);
       if ($member->save()) {
         # TODO: send registration email here
         

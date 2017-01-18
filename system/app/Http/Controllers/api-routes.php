@@ -28,7 +28,7 @@ Route::group($group, function ($router) {
   Route::get('profile');
 
   # USER update profile
-  Route::get('profile/update');
+  Route::post('profile/update', 'UserProfileController@update');
 
   # USER update profile avatar
   Route::get('profile/update-avatar');
