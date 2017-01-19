@@ -23,24 +23,24 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>{{ $page or '' }} - {{ option('site_title') }}</title>
+  <title>{{ $page or '' }}</title>
 
   <!-- FONTS -->
-  {{ Html::style('public/manager/assets/css/font-awesome.min.css') }}
-  {{ Html::style('public/manager/assets/css/font.css') }}
+  {{ Html::style( $assets . '/css/font-awesome.min.css') }}
+  {{ Html::style( $assets . '/css/font.css') }}
 
   <!-- PLUGINS -->
-  {{ Html::style('public/manager/assets/css/select2.css') }}
-  {{ Html::style('public/manager/assets/css/jquery.gritter.css') }}
-  {{ Html::style('public/manager/assets/lib/redactor/redactor.css') }}
+  {{ Html::style( $assets . '/css/select2.css') }}
+  {{ Html::style( $assets . '/css/jquery.gritter.css') }}
+  {{ Html::style( $assets . '/lib/redactor/redactor.css') }}
 
   <!-- CORE -->
-  {{ Html::style('public/manager/assets/css/style.css') }}
-  {{ Html::style('public/manager/assets/css/custom.css') }}
+  {{ Html::style( $assets . '/css/style.css') }}
+  {{ Html::style( $assets . '/css/custom.css') }}
 
-  {{ Html::script('public/manager/assets/js/modernizr.js') }}
-  {{ Html::script('public/manager/assets/js/jquery-3.0.0.min.js') }}  
-  {{ Html::script('public/manager/assets/js/jquery-migrate-3.0.0.min.js') }}  
+  {{ Html::script( $assets . '/js/modernizr.js') }}
+  {{ Html::script( $assets . '/js/jquery-3.0.0.min.js') }}  
+  {{ Html::script( $assets . '/js/jquery-migrate-3.0.0.min.js') }}  
 </head>
 
 <body>
@@ -90,7 +90,7 @@
 
         <ul class="nav nav-tabs nav-justified nav-sidebar">
           <li class="tooltips active" data-placement="bottom" data-toggle="tooltip" title="Main Menu"><a data-toggle="tab" data-target="#mainmenu"><i class="tooltips fa fa-ellipsis-h"></i></a></li>
-          <li class="tooltips" data-placement="bottom" data-toggle="tooltip" title="Log Out"><a href="{{ route('manager.logout') }}"><i class="fa fa-sign-out"></i></a></li>
+          <li class="tooltips" data-placement="bottom" data-toggle="tooltip" title="Log Out"><a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i></a></li>
         </ul>
 
         <div class="tab-content">
@@ -122,15 +122,15 @@
     </div>
   </div>
 
-  {{ Html::script('public/manager/assets/js/bootstrap.min.js') }}
+  {{ Html::script( $assets . '/js/bootstrap.min.js') }}
 
   <!-- PLUGINS -->
-  {{ Html::script('public/manager/assets/js/select2.js') }}
-  {{ Html::script('public/manager/assets/js/jquery.gritter.js') }}
+  {{ Html::script( $assets . '/js/select2.js') }}
+  {{ Html::script( $assets . '/js/jquery.gritter.js') }}
 
   @section('before_footer')@show
-  {{ Html::script('public/manager/assets/js/script.js') }}
-  {{ Html::script('public/manager/assets/js/app.js') }}
+  {{ Html::script( $assets . '/js/script.js') }}
+  {{ Html::script( $assets . '/js/app.js') }}
   @section('after_footer')@show
 </body>
 </html>

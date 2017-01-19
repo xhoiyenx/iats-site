@@ -14,6 +14,5 @@ class Member extends Authenticatable {
    */
   public function setPasswordAttribute($value) {
     $this->attributes['password'] = md5($value);
-  }
-  
+  }  
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 class SystemController extends Controller {
 
-  public function index() {
+  public function install() {
     $this->managers();
     $this->member();
   }

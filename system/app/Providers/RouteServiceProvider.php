@@ -10,6 +10,11 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         parent::boot($router);
+
+        /**
+         * Explicit binding route model variable
+         */
+        $router->model('member', 'Model\Member');
     }
 
     public function map(Router $router)
