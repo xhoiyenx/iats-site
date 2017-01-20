@@ -34,6 +34,7 @@
     <!-- Nav tabs -->
     <ul class="nav nav-tabs nav-line">
       <li class="active"><a href="#general" data-toggle="tab"><strong>General</strong></a></li>
+      <li><a href="#payments" data-toggle="tab"><strong>Payment Methods</strong></a></li>
       <li><a href="#subscription" data-toggle="tab"><strong>Subscription</strong></a></li>
       <li><a href="#statistic" data-toggle="tab"><strong>Statistics</strong></a></li>
     </ul>
@@ -42,6 +43,8 @@
     <div class="tab-content">
       <div class="tab-pane active" id="general">
         @include('users.member.general')
+      </div>
+      <div class="tab-pane" id="payments">
       </div>
       <div class="tab-pane" id="subscription">
       </div>

@@ -7,8 +7,11 @@ use Illuminate\Database\Schema\Blueprint;
 class SystemController extends Controller {
 
   public function install() {
-    $this->managers();
-    $this->member();
+    #$this->managers();
+    #$this->member();
+    #$this->posts();
+    #$this->payment_methods();
+    
   }
 
   public function member()
@@ -25,11 +28,44 @@ class SystemController extends Controller {
       $table->string('address', 150);
       $table->string('city', 50);
       $table->string('bio', 200);
-      $table->string('lat', 15)->nullable();
-      $table->string('lng', 15)->nullable();
       $table->string('api_token', 32);
       $table->string('fcm_token', 100)->nullable();
       $table->string('status', 25)->default('active');
+      $table->timestamps();
+
+    });
+  }
+
+  public function products() {
+    Schema::dropIfExists('products');
+    Schema::create('products', function(Blueprint $table) {
+
+      $table->increments('product_id');
+      $table->integer('base_price')->default(0);
+      $table->string('unit_type', 20);
+      $table->integer('article_id')->nullable();
+      $table->integer('brand_id')->nullable();
+      $table->integer('color_id')->nullable();
+      $table->string('status', 20)->default('active');
+      $table->timestamps();
+
+    });
+  }
+
+  public function payment_methods() {
+    Schema::dropIfExists('payment_methods');
+    Schema::create('payment_methods', function(Blueprint $table) {
+
+      $table->increments('id');
+      $table->integer('member_id');
+      $table->string('type', 20)->default('card');
+      $table->string('number', 100);
+      $table->string('number_alias', 30);
+      $table->string('number_type', 30);
+      $table->string('cvv', 5);
+      $table->char('expiry_month', 2);
+      $table->char('expiry_year', 2);
+      $table->string('status', 20)->default('regular');
       $table->timestamps();
 
     });
@@ -61,5 +97,93 @@ class SystemController extends Controller {
       $table->timestamps();      
 
     });
+  }
+
+  public function posts() {
+
+    # posts
+    ########################################
+    Schema::dropIfExists('posts');
+    Schema::create('posts', function(Blueprint $table) {
+
+      $table->bigIncrements('post_id');
+      $table->integer('member_id');
+      $table->integer('place_id');
+      $table->text('name')->nullable();
+      $table->text('description')->nullable();
+      $table->string('image', 200);
+      $table->string('status', 20)->default('active');
+      $table->integer('total_likes');
+      $table->timestamps();
+
+    });
+
+    # post likes counter
+    ########################################
+    Schema::dropIfExists('post_likes');
+    Schema::create('post_likes', function(Blueprint $table) {
+
+      $table->bigIncrements('like_id');
+      $table->bigInteger('post_id');
+      $table->integer('member_id');
+      $table->timestamps();
+
+    });
+
+    # post comments
+    ########################################
+    Schema::dropIfExists('post_comments');
+    Schema::create('post_comments', function(Blueprint $table) {
+
+      $table->bigIncrements('comment_id');
+      $table->bigInteger('post_id');
+      $table->integer('member_id');
+      $table->text('description')->nullable();
+      $table->string('status', 20)->default('active');
+      $table->timestamps();
+
+    });
+
+    # post tags
+    ########################################
+    Schema::dropIfExists('post_tags');
+    Schema::create('post_tags', function(Blueprint $table) {
+
+      $table->bigIncrements('tag_id');
+      $table->string('description', 100);
+      $table->integer('total_posts');
+
+    });
+
+    # post tags relation
+    ########################################
+    Schema::dropIfExists('post_tag_relation');
+    Schema::create('post_tag_relation', function(Blueprint $table) {
+
+      $table->bigInteger('post_id');
+      $table->bigInteger('tag_id');
+
+    });
+
+    # post places
+    ########################################
+    Schema::dropIfExists('places');
+    Schema::create('places', function(Blueprint $table) {
+
+      $table->bigIncrements('place_id');
+      $table->string('google_id', 20);
+      $table->string('name', 200);
+      $table->text('address');
+      $table->string('country', 100);
+      $table->string('city', 100);
+      $table->string('lat');
+      $table->string('lng');
+
+    });
+
+    # post places relation
+    ########################################
+    Schema::dropIfExists('post_places');
+
   }
 }
