@@ -16,9 +16,10 @@
  */
 ?>
 @extends('inc.master')
+@section('title', $page)
 @section('content')
 {{ Form::model($form, ['route' => 'member::save']) }}
-{{ Form::hidden('id', $form->id) }}
+{{ Form::hidden('member_id', $form->member_id) }}
 <h1 class="manager-title clearfix">
   <i class="fa fa-fw fa-file-o"></i>{{ $page or '' }}
   <div class="btn-toolbar pull-right">
@@ -28,67 +29,25 @@
 </h1>
 @include('inc.messages')
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
 
-    <div class="form-group">
-      <label>Username: </label>
-      {{ Form::text('page_name', null, ['class' => 'form-control']) }}
-    </div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-line">
+      <li class="active"><a href="#general" data-toggle="tab"><strong>General</strong></a></li>
+      <li><a href="#subscription" data-toggle="tab"><strong>Subscription</strong></a></li>
+      <li><a href="#statistic" data-toggle="tab"><strong>Statistics</strong></a></li>
+    </ul>
 
-    <div class="form-group">
-      <label>E-mail address: </label>
-      {{ Form::text('page_name', null, ['class' => 'form-control']) }}
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Change password: </label>
-          {{ Form::password('password', ['class' => 'form-control']) }}
-        </div>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="general">
+        @include('users.member.general')
       </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Confirm password: </label>
-          {{ Form::password('confirm_password', ['class' => 'form-control']) }}
-        </div>
+      <div class="tab-pane" id="subscription">
+      </div>
+      <div class="tab-pane" id="statistic">
       </div>
     </div>
-
-    <div class="form-group">
-      <label>Fullname: </label>
-      {{ Form::text('page_name', null, ['class' => 'form-control']) }}
-    </div>    
-
-    <div class="form-group">
-      <label>Mobile phone: </label>
-      {{ Form::text('page_name', null, ['class' => 'form-control']) }}
-    </div>
-
-    <div class="form-group">
-      <label>Address: </label>
-      {{ Form::text('page_name', null, ['class' => 'form-control']) }}
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>City: </label>
-          {{ Form::password('password', ['class' => 'form-control']) }}
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Status: </label>
-          {{ Form::password('confirm_password', ['class' => 'form-control']) }}
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>Bio: </label>
-      {{ Form::text('page_name', null, ['class' => 'form-control']) }}
-    </div>    
 
   </div>
 </div>

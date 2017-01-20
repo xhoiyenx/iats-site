@@ -2145,7 +2145,7 @@ blockquote { color: #464f63; font-weight: 400; font-size: 16px; font-family: Geo
 
 /* Header Panel */
 .headerpanel { position: fixed; top: 0; left: 0; right: 0; height: 64px; background-color: #262b36; z-index: 2000; }
-.headerpanel .logopanel { position: absolute; left: -220px; width: 220px; height: 64px; padding: 18px 15px; background-color: #20242d; }
+.headerpanel .logopanel { position: absolute; left: -300px; width: 300px; height: 64px; padding: 18px 15px; background-color: #20242d; }
 .headerpanel .logopanel h2 { margin: 0; font-weight: 500; }
 .headerpanel .logopanel h2 > a { -webkit-transition: all 0.2s ease-out 0s; -o-transition: all 0.2s ease-out 0s; transition: all 0.2s ease-out 0s; }
 .headerpanel .logopanel h2 > a:hover { color: #31c1d2; }
@@ -2154,7 +2154,7 @@ blockquote { color: #464f63; font-weight: 400; font-size: 16px; font-family: Geo
 }
 .headerbar { position: relative; padding-left: 64px; }
 @media (min-width:992px) {
-  .headerbar { margin-left: 220px; left: 0 !important; }
+  .headerbar { margin-left: 300px; left: 0 !important; }
 }
 .menutoggle { position: absolute; width: 64px; height: 64px; top: 0; left: 0; font-size: 21px; cursor: pointer; color: #778395; -webkit-transition: all 0.2s ease-out 0s; -o-transition: all 0.2s ease-out 0s; transition: all 0.2s ease-out 0s; }
 .menutoggle i { position: absolute; top: 50%; left: 50%; margin-top: -11px; margin-left: -10px; }
@@ -2249,7 +2249,7 @@ blockquote { color: #464f63; font-weight: 400; font-size: 16px; font-family: Geo
 .today-weather > i { color: #657390; margin-right: 5px; }
 
 /************ LEFT PANEL ***********/
-.leftpanel { background-color: #ffffff; width: 220px; position: fixed; top: 64px; bottom: 0; left: -220px; z-index: 100; overflow-y: auto; overflow-x: hidden; }
+.leftpanel { background-color: #ffffff; width: 300px; position: fixed; top: 64px; bottom: 0; left: -300px; z-index: 100; overflow-y: auto; overflow-x: hidden; }
 .leftpanel .tab-pane { padding: 0; background-color: transparent; }
 .leftpanel .media-list-contacts .media { border-color: #eaecf0; }
 @media (min-width:992px) {
@@ -2365,7 +2365,7 @@ blockquote { color: #464f63; font-weight: 400; font-size: 16px; font-family: Geo
 .sidebar { position: absolute; top: 64px; bottom: 0; padding: 15px; }
 .sidebar.left { left: 0; }
 .sidebar.right { right: 0; }
-.sidebar.email { width: 220px; background-color: #fff; }
+.sidebar.email { width: 300px; background-color: #fff; }
 .sidebar-title { text-transform: uppercase; font-size: 11px; color: #9fa8bc; line-height: normal; padding: 0 15px; font-weight: 500; letter-spacing: .5px; }
 .nav-sidebar.nav-justified { background-color: #657390; margin-bottom: 20px; border-top-right-radius: 0; border-top-left-radius: 0; }
 .nav-sidebar.nav-justified > li > a { border-radius: 0; background-color: #505b72; color: #fff; padding: 8px 10px; font-size: 14px; vertical-align: bottom; }
@@ -2769,7 +2769,7 @@ color: #DDD; }
 /***** MAIN PANEL *****/
 .mainpanel { padding-top: 64px; }
 @media (min-width:992px) {
-  .mainpanel { margin-left: 220px; }
+  .mainpanel { margin-left: 300px; }
 }
 @media (max-width:991px) {
   .mainpanel { position: relative; }
@@ -3030,7 +3030,7 @@ div.error { margin-bottom: 20px; }
 .well.inverse { background-color: #262b36; }
 .email-options { position: fixed; top: 64px; left: 0; width: 360px; padding: 12px 15px; background-color: #bac1ce; }
 @media (min-width:992px) {
-  .email-options { left: 220px; }
+  .email-options { left: 300px; }
 }
 @media (max-width:768px) {
   .email-options { width: 320px; }
@@ -3047,7 +3047,7 @@ div.error { margin-bottom: 20px; }
 .markstar.starred { color: #e6ad5c; }
 .emailcontent { position: fixed; top: 64px; left: 0; bottom: 0; width: 360px; margin-top: 42px; overflow-y: auto; overflow-x: hidden; }
 @media (min-width:992px) {
-  .emailcontent { left: 220px; }
+  .emailcontent { left: 300px; }
 }
 @media (max-width:768px) {
   .emailcontent { width: 320px; }

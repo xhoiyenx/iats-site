@@ -30,13 +30,13 @@
       </li>
     </ul>
   </li>
-  <li class="{!! is_active(['manager::index', 'member::index'], 'active ') !!}nav-parent">
+  <li class="{!! is_active(['manager::index', 'member::index', 'member::update'], 'active ') !!}nav-parent">
     <a href="#"><i class="fa fa-users"></i> <span>Users</span></a>
     <ul class="children">
       <li class="{!! is_active(['manager::index'], 'active ') !!}">
         <a href="{{ route('manager::index') }}">Administrator</a>
       </li>
-      <li class="{!! is_active(['member::index'], 'active ') !!}">
+      <li class="{!! is_active(['member::index', 'member::update'], 'active ') !!}">
         <a href="{{ route('member::index') }}">Member</a>
       </li>
     </ul>

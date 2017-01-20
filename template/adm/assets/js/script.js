@@ -6,10 +6,10 @@ $(document).ready(function() {
     var collapsedMargin = $('.mainpanel').css('margin-left');
     var collapsedLeft = $('.mainpanel').css('left');
 
-    if (collapsedMargin === '220px' || collapsedLeft === '220px') {
-      toggleMenu(-220, 0);
+    if (collapsedMargin === '300px' || collapsedLeft === '300px') {
+      toggleMenu(-300, 0);
     } else {
-      toggleMenu(0, 220);
+      toggleMenu(0, 300);
     }
 
   });
@@ -303,11 +303,8 @@ $(document).ready(function() {
 
   /**
    * INIT SELECT2
-  $('select').select2({
-    dropdownAutoWidth: true,
-    width: 'style'
-  });
    */
+  $('select').select2();
 
   /**
    * Bind checkall checkbox

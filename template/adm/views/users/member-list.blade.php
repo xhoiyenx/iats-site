@@ -21,6 +21,7 @@
   <i class="fa fa-fw fa-list"></i>{{ $page or '' }}
 </h1>
 {{ Form::open(['route' => 'member::index']) }}
+<!--
 <div class="row mb15">
   <div class="col-md-3">
     <div class="input-group">
@@ -28,9 +29,10 @@
       <span class="input-group-btn">
         <button class="btn btn-default" type="submit">Go!</button>
       </span>
-    </div><!-- /input-group -->  
+    </div>
   </div>
 </div>
+-->
 @include('inc.messages')
 <div class="panel">
 <table class="table table-bordered table-primary">

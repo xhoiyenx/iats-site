@@ -21,9 +21,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="author" content="hoiyen.2000@gmail.com">
 
-  <title>{{ $page or '' }}</title>
+  <title>
+    @hasSection ('title')
+      @yield('title') - IATS
+    @else
+      IATS
+    @endif    
+  </title>
 
   <!-- FONTS -->
   {{ Html::style( $assets . '/css/font-awesome.min.css') }}

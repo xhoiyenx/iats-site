@@ -6,6 +6,7 @@ class Member extends Authenticatable {
 
   protected $primaryKey = 'member_id';
   protected $hidden = ['password'];
+  protected $guarded = ['password'];
 
   /**
    * Password mutator
