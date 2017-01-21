@@ -11,6 +11,7 @@ class SystemController extends Controller {
     #$this->member();
     #$this->posts();
     #$this->payment_methods();
+    $this->products();
     
   }
 
@@ -41,7 +42,8 @@ class SystemController extends Controller {
     Schema::create('products', function(Blueprint $table) {
 
       $table->increments('product_id');
-      $table->integer('base_price')->default(0);
+      $table->integer('base')->default(0);
+      $table->double('unit', 10, 4)->nullable();
       $table->string('unit_type', 20);
       $table->integer('article_id')->nullable();
       $table->integer('brand_id')->nullable();
@@ -50,6 +52,45 @@ class SystemController extends Controller {
       $table->timestamps();
 
     });
+
+    Schema::dropIfExists('product_units');
+    Schema::create('product_units', function(Blueprint $table) {
+
+      $table->increments('unit_id');
+      $table->integer('product_id');
+      $table->integer('price')->default(0);
+      $table->double('unit', 10, 4)->nullable();
+      $table->string('status', 20)->default('active');
+
+    });
+
+    Schema::dropIfExists('articles');
+    Schema::create('articles', function(Blueprint $table) {
+
+      $table->increments('article_id');
+      $table->string('name', 200);
+      $table->timestamps();
+
+    });
+
+    Schema::dropIfExists('brands');
+    Schema::create('brands', function(Blueprint $table) {
+
+      $table->increments('brand_id');
+      $table->string('name', 200);
+      $table->timestamps();
+
+    });
+
+    Schema::dropIfExists('colors');
+    Schema::create('colors', function(Blueprint $table) {
+
+      $table->increments('color_id');
+      $table->string('name', 200);
+      $table->timestamps();
+
+    });
+
   }
 
   public function payment_methods() {

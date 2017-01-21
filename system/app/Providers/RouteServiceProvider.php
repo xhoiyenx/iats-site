@@ -15,6 +15,7 @@ class RouteServiceProvider extends ServiceProvider
          * Explicit binding route model variable
          */
         $router->model('member', 'Model\Member');
+        $router->model('post', 'Model\Post');
     }
 
     public function map(Router $router)

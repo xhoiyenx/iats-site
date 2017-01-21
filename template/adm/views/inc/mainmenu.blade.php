@@ -17,7 +17,7 @@
 ?>
 <ul class="nav nav-pills nav-stacked nav-quirk">
   <li>
-    <a href="#"><i class="fa fa-list"></i> <span>Blog</span></a>
+    <a href="{{ route('post::index') }}"><i class="fa fa-list"></i> <span>Post</span></a>
   </li>
   <li class="nav-parent">
     <a href="#"><i class="fa fa-tags"></i> <span>Catalog</span></a>

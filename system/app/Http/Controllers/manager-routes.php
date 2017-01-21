@@ -18,18 +18,18 @@ Route::group(['prefix' => 'admin', 'as' => 'manager::'], function() {
   Route::any('/{id?}', 'ManagerController@index')->name('index');
 });
 
-# BLOG
+# POST
 #####################################
-# 1. Blog list
-# 2. Blog create
-# 3. Blog update
-# 4. Blog delete
-Route::group(['prefix' => 'blog', 'as' => 'blog::'], function() {
-  Route::any('/', 'BlogController@index')->name('index');
-  Route::get('create', 'BlogController@create')->name('create');
-  Route::get('{Blog_id}/update', 'BlogController@update')->name('update');
-  Route::get('{Blog_id}/delete', 'BlogController@delete')->name('delete');
-  Route::post('save', 'BlogController@save')->name('save');
+# 1. Post list
+# 2. Post create
+# 3. Post update
+# 4. Post delete
+Route::group(['prefix' => 'post', 'as' => 'post::'], function() {
+  Route::any('/', 'Post\PostController@index')->name('index');
+  Route::get('create', 'Post\PostController@create')->name('create');
+  Route::get('{post}/update', 'Post\PostController@update')->name('update');
+  Route::get('{post}/delete', 'Post\PostController@delete')->name('delete');
+  Route::post('save', 'Post\PostController@save')->name('save');
 });
 
 # MEMBER
@@ -46,9 +46,11 @@ Route::group(['prefix' => 'member', 'as' => 'member::'], function() {
 });
 
 
-# PRODUCT
+# CATALOG
 #####################################
-# 1. Product list
-# 2. Product create
-# 3. Product update
-# 4. Product soft-delete
+Route::group(['prefix' => 'catalog', 'as' => 'catalog.'], function() {
+
+  # COLOR
+  Route::get('article', 'Catalog\ArticleController@index')->name('article');
+
+});

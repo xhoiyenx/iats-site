@@ -11,6 +11,13 @@ class BrandController extends Controller {
    */
   public function index() {
 
+    $view = [
+      'page' => 'Posts',
+      'list' => PostQuery::all()
+    ];
+
+    return view('posts.list', $view);
+
   }
 
   /**
