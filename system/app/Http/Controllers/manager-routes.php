@@ -14,8 +14,9 @@ Route::get('logout', 'AuthController@logout')->name('logout');
 # 2. Manager create
 # 3. Manager update
 # 4. Manager delete
-Route::group(['prefix' => 'admin', 'as' => 'manager::'], function() {
-  Route::any('/{id?}', 'ManagerController@index')->name('index');
+Route::group(['prefix' => 'admin', 'as' => 'manager.'], function() {
+  Route::any('/', 'User\ManagerController@index')->name('index');
+  Route::post('form/{manager?}', 'User\ManagerController@form')->name('form');
 });
 
 # POST
@@ -50,7 +51,24 @@ Route::group(['prefix' => 'member', 'as' => 'member::'], function() {
 #####################################
 Route::group(['prefix' => 'catalog', 'as' => 'catalog.'], function() {
 
-  # COLOR
-  Route::get('article', 'Catalog\ArticleController@index')->name('article');
+  # Article
+  Route::any('article', 'Catalog\ArticleController@index')->name('article');
+  Route::post('article/form/{article?}', 'Catalog\ArticleController@form')->name('article.form');
+
+  # Brand
+  Route::any('brand', 'Catalog\BrandController@index')->name('brand');
+  Route::post('brand/form/{brand?}', 'Catalog\BrandController@form')->name('brand.form');
+
+  # Color
+  Route::any('color', 'Catalog\ColorController@index')->name('color');
+  Route::post('color/form/{color?}', 'Catalog\ColorController@form')->name('color.form');
+
+  # Product
+  Route::any('product', 'Catalog\ProductController@index')->name('product');
+  Route::post('product/form/{product?}', 'Catalog\ProductController@form')->name('product.form');
+
+  # Product Media
+  Route::any('product/{product}/media', 'Catalog\ProductMediaController@index')->name('product.media');
+  Route::post('product/{product}/media/form/{product_media?}', 'Catalog\ProductMediaController@form')->name('product.media.form');  
 
 });

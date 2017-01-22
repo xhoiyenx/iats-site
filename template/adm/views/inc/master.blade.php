@@ -45,7 +45,7 @@
   {{ Html::style( $assets . '/css/custom.css') }}
 
   {{ Html::script( $assets . '/js/modernizr.js') }}
-  {{ Html::script( $assets . '/js/jquery-3.0.0.min.js') }}  
+  {{ Html::script( $assets . '/js/jquery-3.1.1.min.js') }}  
   {{ Html::script( $assets . '/js/jquery-migrate-3.0.0.min.js') }}  
 </head>
 
@@ -120,14 +120,6 @@
     </div><!-- mainpanel -->
   </section>
 
-  <!-- default modal -->
-  <div class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      </div>
-    </div>
-  </div>
-
   {{ Html::script( $assets . '/js/bootstrap.min.js') }}
 
   <!-- PLUGINS -->
@@ -138,5 +130,14 @@
   {{ Html::script( $assets . '/js/script.js') }}
   {{ Html::script( $assets . '/js/app.js') }}
   @section('after_footer')@show
+
+  <!-- default modal -->
+  <div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      </div>
+    </div>
+  </div>
+  
 </body>
 </html>

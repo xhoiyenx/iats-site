@@ -54,6 +54,9 @@ class Handler extends ExceptionHandler
             ];
             return response()->json($response, 401);
         }
+        elseif ( $request->ajax() ) {
+            return response($e->getMessage());
+        }
         /**
          * Handle error
          */

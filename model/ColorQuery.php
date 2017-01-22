@@ -1,7 +1,7 @@
 <?php
 namespace Model;
 
-class ArticleQuery {
+class ColorQuery {
 
   /**
    * Show list
@@ -10,9 +10,9 @@ class ArticleQuery {
    */
   public static function all( $limit = 20 ) {
 
-    $data = Article::query();
+    $data = Color::query();
     # default sort
-    $data->orderBy('article_id');
+    $data->orderBy('color_id');
     if ( $limit == '-1' ) {
       $list = $data->get();
     }
@@ -26,9 +26,9 @@ class ArticleQuery {
 
   public static function lists() {
 
-    $data = Article::query();
+    $data = Color::query();
     $data->orderBy('name');
-    return $data->lists('name', 'article_id');
+    return $data->lists('name', 'color_id');
 
   }
 

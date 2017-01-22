@@ -1,9 +1,13 @@
 <?php
 namespace App\Http\Controllers\Manager\Catalog;
 
-use App\Http\Controllers\Manager\Controller;
+use Validator;
+use Model\Brand;
+use Model\BrandQuery;
+use Illuminate\Support\MessageBag;
+use App\Http\Controllers\Manager\Controller as BaseController;
 
-class BrandController extends Controller {
+class BrandController extends BaseController {
 
   /**
    * Brand list
@@ -11,34 +15,87 @@ class BrandController extends Controller {
    */
   public function index() {
 
+    # delete request
+    if ( $this->request->delete ) {
+      $delete = Brand::find($this->request->delete);
+      if ( !empty($delete) ) {
+        foreach ($delete as $record) {
+          $record->delete();
+        }
+      }
+      return back()->withMessage('Successfully delete selected items');
+    }    
+
     $view = [
-      'page' => 'Posts',
-      'list' => PostQuery::all()
+      'page' => 'Brand',
+      'list' => BrandQuery::all()
     ];
 
-    return view('posts.list', $view);
-
+    return view('catalog.brand.list', $view);
   }
 
   /**
    * Brand form
    */
-  public function create() {
+  public function form(Brand $brand = null) {
+
+    if (!$brand) {
+      $brand = new Brand;
+    }
+
+    $this->content += [
+      'form' => $brand
+    ];
+
+    $this->save($brand);
+
+    return view('catalog.brand.form', $this->content);
 
   }
 
   /**
-   * Brand update
+   * Article save
    */
-  public function update() {
+  public function save(Brand $brand) {
     
-  }
+    $r = $this->request;
 
-  /**
-   * Brand save
-   */
-  public function save() {
-    
+    # skip if request not saving
+    if (!$r->has('save')) {
+      return;
+    }
+
+    # assign values to model
+    $brand->name = $r->name;
+
+    # set validation rules
+    if ($brand->exists) {
+      $rules = [
+        'name' => 'required|unique:brands,name,' . $brand->brand_id . ',brand_id',
+      ];
+    }
+    else {
+      $rules = [
+        'name' => 'required|unique:brands',
+      ];
+    }
+
+    $validator = Validator::make($r->all(), $rules);
+
+    if ($validator->fails()) {
+      $this->content['errors'] = $validator->messages();
+    }
+    else {
+
+      if ($brand->save()) {
+        $this->content['infos'] = new MessageBag(['Data saved']);
+        $brand = new Brand;
+      }
+
+    }
+
+    $this->content['form'] = $brand;
+
   }  
 
 }

@@ -14,6 +14,12 @@ class RouteServiceProvider extends ServiceProvider
         /**
          * Explicit binding route model variable
          */
+        $router->model('article', 'Model\Article');
+        $router->model('brand', 'Model\Brand');
+        $router->model('color', 'Model\Color');
+        $router->model('product', 'Model\Product');
+        $router->model('product_media', 'Model\ProductMedia');
+        $router->model('manager', 'Model\Manager');
         $router->model('member', 'Model\Member');
         $router->model('post', 'Model\Post');
     }

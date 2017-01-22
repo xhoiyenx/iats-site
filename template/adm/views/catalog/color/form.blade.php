@@ -1,66 +1,30 @@
-@extends('inc.master')
-@section('title', $page)
-@section('content')
-{{ Form::model($form, ['route' => 'post::save']) }}
-{{ Form::hidden('post_id', $form->post_id) }}
-<h1 class="manager-title clearfix">
-  <i class="fa fa-fw fa-file-o"></i>{{ $page or '' }}
-  <div class="btn-toolbar pull-right">
-    <button type="submit" class="btn btn-success btn-quirk">Save</button>
-    <a href="{{ route('post::index') }}" class="btn btn-primary btn-quirk">Exit</a>
-  </div>  
-</h1>
-@include('inc.messages')
-<div class="row">
-  <div class="col-md-9">
-
-    <div class="form-group">
-      <label>Member: </label>
-      <p>email@example.com</p>
-    </div>
-
-    <hr>
-
-    <div class="form-group">
-      <label>Caption: </label>
-      <p>email@example.com</p>
-    </div>
-
-    <hr>
-
-    <div class="form-group">
-      <label>Location: </label>
-      <p>email@example.com</p>
-    </div>
-
-    <hr>
-
-    <div class="form-group">
-      <label>Tags: </label>
-      <p><a href="#"><span class="badge">tags</span></a> <a href="#"><span class="badge">tags</span></a> <a href="#"><span class="badge">tags</span></a> <a href="#"><span class="badge">tags</span></a></p>
-    </div>
-
-    <hr>    
-
-    <div class="form-group">
-      <label>Status: </label>
-      {{ Form::select('status', ['active' => 'Active', 'blocked' => 'Blocked'], $form->status, ['class' => 'form-control', 'style' => 'width: 100%']) }}
-    </div>    
-
+<?php
+$attr = [
+  'route' => ['catalog.color.form', $form->color_id],
+  'class' => 'form-horizontal'
+];
+?>
+<div class="ajax-form">
+{{ Form::model($form, $attr) }}
+  <input type="hidden" name="save" value="1">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">Color</h3>
   </div>
-
-  <div class="col-md-3">
+  <div class="modal-body">
+    @include('inc.messages')
     
-    <div class="panel">
-      <div class="panel-heading">
-        <h4 class="panel-title">Image</h4>
-      </div>
-      <div class="panel-body">
-        <img class="img-responsive" src="{{ $assets . '/images/image.jpg' }}">
+    <div class="form-group">
+      <label class="col-sm-4 control-label">Name</label>
+      <div class="col-sm-8">
+        {{ Form::text('name', null, ['class' => 'form-control']) }}
       </div>
     </div>
 
   </div>
-</div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button class="btn btn-primary" name="save" value="1">Save changes</button>
+  </div>
 {{ Form::close() }}
-@endsection
+</div>

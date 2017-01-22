@@ -11,6 +11,7 @@ class Controller extends BaseController
   use ValidatesRequests;
   
   protected $request;
+  protected $content = []; # can be used for chained data view;
 
   public function __construct(Request $request) {
 

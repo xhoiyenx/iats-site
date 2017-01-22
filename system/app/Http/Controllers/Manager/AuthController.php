@@ -43,7 +43,7 @@ class AuthController extends Controller {
       'password' => $request->input('password')
     ];
     if ( Auth::attempt( $login ) ) {
-      return redirect()->intended('dashboard');
+      return redirect()->intended('manager/post');
     }
     else {
       return back()->withErrors('Login attempt failed');

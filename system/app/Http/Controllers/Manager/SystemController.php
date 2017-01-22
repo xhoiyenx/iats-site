@@ -11,7 +11,8 @@ class SystemController extends Controller {
     #$this->member();
     #$this->posts();
     #$this->payment_methods();
-    $this->products();
+    #$this->products();
+    $this->product_media();
     
   }
 
@@ -42,6 +43,8 @@ class SystemController extends Controller {
     Schema::create('products', function(Blueprint $table) {
 
       $table->increments('product_id');
+      $table->string('code', 50);
+      $table->string('type', 20);
       $table->integer('base')->default(0);
       $table->double('unit', 10, 4)->nullable();
       $table->string('unit_type', 20);
@@ -91,6 +94,20 @@ class SystemController extends Controller {
 
     });
 
+  }
+
+  public function product_media() {
+    Schema::dropIfExists('product_medias');
+    Schema::create('product_medias', function(Blueprint $table) {
+
+      $table->increments('media_id');
+      $table->integer('product_id');
+      $table->string('name', 200);
+      $table->string('type', 10);
+      $table->text('path');
+      $table->integer('sort_order')->default(0);
+
+    });
   }
 
   public function payment_methods() {

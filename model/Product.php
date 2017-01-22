@@ -8,7 +8,22 @@ class Product extends Model {
 
   public function article()
   {
-    return $this->hasMany('App\Product');
+    return $this->belongsTo('Model\Article');
+  }
+
+  public function brand()
+  {
+    return $this->belongsTo('Model\Brand');
+  }
+
+  public function color()
+  {
+    return $this->belongsTo('Model\Color');
+  }
+
+  public function medias()
+  {
+    return $this->hasMany('Model\ProductMedia');
   }
 
 }

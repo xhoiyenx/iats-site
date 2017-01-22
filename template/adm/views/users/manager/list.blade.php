@@ -1,8 +1,7 @@
 @extends('inc.master')
 @section('title', $page)
 @section('content')
-{{ Form::open(['route' => 'catalog.brand']) }}
-@include('inc.toolbar', ['_add_new' => route('catalog.brand.form'), '_ajax' => true])
+@include('inc.toolbar', ['_add_new' => route('manager.form'), '_ajax' => true])
 <div class="row">
   <div class="col-md-12">
     <div class="panel">
@@ -10,16 +9,16 @@
       <thead>
         <tr>
           <th class="cbox"><input type="checkbox" class="checkall"></th>
-          <th>name</th>
+          <th>username</th>
         </tr>
       </thead>
       <tbody>
       @if ( isset($list) )
         @forelse ( $list as $data )
         <tr>
-          <td class="cbox"><input type="checkbox" name="delete[]" value="{{ $data->brand_id }}"></td>
+          <td class="cbox"><input type="checkbox" name="delete[]" value="{{ $data->id }}"></td>
           <td>
-            <a href="{{ route('catalog.brand.form', $data->brand_id) }}" class="btn-form">{{ $data->name }}</a>
+            <a href="{{ route('manager.form', $data->id) }}" class="btn-form">{{ $data->username }}</a>
           </td>
         </tr>
         @empty
@@ -40,5 +39,4 @@
     @endif
   </div>
 </div>
-{{ Form::close() }}
 @endsection
