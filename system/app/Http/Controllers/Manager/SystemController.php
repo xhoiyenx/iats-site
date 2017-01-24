@@ -62,6 +62,7 @@ class SystemController extends Controller {
       $table->increments('unit_id');
       $table->integer('product_id');
       $table->integer('price')->default(0);
+      $table->string('code', 50)->unique();
       $table->double('unit', 10, 4)->nullable();
       $table->string('status', 20)->default('active');
 

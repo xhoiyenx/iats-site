@@ -25,6 +25,9 @@
             <a href="{{ route('catalog.product.form', $data->product_id) }}" class="btn-form">{{ $data->code }}</a>
             <div class="action-block">
               <a href="{{ route('catalog.product.media', $data->product_id) }}">media</a>
+              @if ($data->type == 'leather')
+              | <a href="{{ route('catalog.product.unit', $data->product_id) }}">sizes</a>
+              @endif
             </div>
           </td>
           <td>

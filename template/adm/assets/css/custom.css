@@ -52,7 +52,7 @@ body { background-color: #F5F5F5; font-family: 'Open Sans', arial, sans-serif; }
 /** LIST PAGE **/
 .input-group .btn { padding: 8px 12px 7px; }
 .action-block { height: 17.15px; }
-.action-block a { color: #666; font-size: 12px; font-weight: 300; visibility: hidden; }
+.action-block a { color: #666; font-size: 12px; font-weight: 300; /*visibility: hidden;*/ }
 .action-block a:hover { color: #000; }
 .table td:hover .action-block a { visibility: inherit; }
 .breadcrumb-quirk { line-height: 34.15px; }

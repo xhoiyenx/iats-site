@@ -26,4 +26,9 @@ class Product extends Model {
     return $this->hasMany('Model\ProductMedia');
   }
 
+  public function units()
+  {
+    return $this->hasMany('Model\ProductUnits');
+  }
+
 }

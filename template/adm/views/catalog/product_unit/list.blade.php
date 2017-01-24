@@ -1,9 +1,9 @@
 @extends('inc.master')
 @section('title', $page)
 @section('content')
-{{ Form::open(['route' => ['catalog.product.media', $product->product_id]]) }}
+{{ Form::open(['route' => ['catalog.product.unit', $product->product_id]]) }}
 @include('inc.messages')
-@include('inc.toolbar', ['_add_new' => route('catalog.product.media.form', $product->product_id), '_ajax' => true])
+@include('inc.toolbar', ['_add_new' => route('catalog.product.unit.form', $product->product_id), '_ajax' => true])
 <div class="row">
   <div class="col-md-12">
     <div class="panel">
@@ -12,15 +12,19 @@
         <tr>
           <th class="cbox"><input type="checkbox" class="checkall"></th>
           <th>code</th>
+          <th>size</th>
         </tr>
       </thead>
       <tbody>
       @if ( isset($list) )
         @forelse ( $list as $data )
         <tr>
-          <td class="cbox"><input type="checkbox" name="delete[]" value="{{ $data->media_id }}"></td>
+          <td class="cbox"><input type="checkbox" name="delete[]" value="{{ $data->unit_id }}"></td>
           <td>
-            <a href="{{ route('catalog.product.media.form', ['product' => $data->product_id, 'media' => $data->media_id]) }}" class="btn-form">{{ $data->name }}</a>
+            <a href="{{ route('catalog.product.unit.form', ['product' => $data->product_id, 'unit' => $data->unit_id]) }}" class="btn-form">{{ $data->name }}</a>
+          </td>
+          <td>
+            {{ $data->unit }}
           </td>
         </tr>
         @empty

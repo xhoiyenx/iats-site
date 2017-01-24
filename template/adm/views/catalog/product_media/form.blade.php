@@ -46,8 +46,12 @@ $attr = [
     <div class="form-group">
       <label class="col-sm-4 control-label">Preview</label>
       <div class="col-sm-8 preview">
-      @if ($form->exists AND $form->type == 'image')
-      <img src="{{ $form->path }}" class="img-responsive">
+      @if ($form->exists)
+        @if ($form->type == 'image')
+        <img src="{{ $form->path }}" class="img-responsive">
+        @else
+        <div class="youtube"><iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $form->name }}" frameborder="0"></iframe></div>
+        @endif
       @endif
       </div>
     </div>

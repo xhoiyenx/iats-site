@@ -5,18 +5,18 @@ use Image;
 use Validator;
 use Model\Product;
 use Model\ProductQuery;
-use Model\ProductMedia;
-use Model\ProductMediaQuery;
+use Model\ProductUnit;
+use Model\ProductUnitQuery;
 use Illuminate\Support\MessageBag;
 use App\Http\Controllers\Manager\Controller as BaseController;
 
-class ProductMediaController extends BaseController {
+class ProductUnitController extends BaseController {
 
   public function index(Product $product) {
 
     # delete request
     if ( $this->request->delete ) {
-      $delete = ProductMedia::find($this->request->delete);
+      $delete = ProductUnit::find($this->request->delete);
       if ( !empty($delete) ) {
         foreach ($delete as $record) {
           $record->delete();
@@ -26,33 +26,33 @@ class ProductMediaController extends BaseController {
     }    
 
     $this->content += [
-      'page' => 'Product Media',
-      'list' => ProductMediaQuery::all($product->product_id),
+      'page' => 'Product Unit',
+      'list' => ProductUnitQuery::all($product->product_id),
       'product' => $product
     ];
 
-    return view('catalog.product_media.list', $this->content);
+    return view('catalog.product_unit.list', $this->content);
 
   }
 
-  public function form(Product $product, ProductMedia $media = null) {
+  public function form(Product $product, ProductUnit $unit = null) {
 
-    if (!$media->exists) {
-      $media->product_id = $product->product_id;
-      $media->sort_order = 0;
+    if (!$unit->exists) {
+      $unit->product_id = $product->product_id;
     }
 
     $this->content += [
-      'form' => $media,
+      'form' => $unit,
+      'product' => $product
     ];
 
-    $this->save($media);
+    $this->save($unit);
 
-    return view('catalog.product_media.form', $this->content);
+    return view('catalog.product_unit.form', $this->content);
 
   }
 
-  private function save(ProductMedia $media) {
+  private function save(ProductUnit $media) {
 
     $errors = [];
     $r = $this->request;
@@ -128,7 +128,7 @@ class ProductMediaController extends BaseController {
 
       if ($media->save()) {
         $this->content['infos'] = new MessageBag(['Data saved']);
-        $media = new ProductMedia;
+        $media = new ProductUnit;
       }
 
     }

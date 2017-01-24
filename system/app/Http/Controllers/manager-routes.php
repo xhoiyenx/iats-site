@@ -69,6 +69,10 @@ Route::group(['prefix' => 'catalog', 'as' => 'catalog.'], function() {
 
   # Product Media
   Route::any('product/{product}/media', 'Catalog\ProductMediaController@index')->name('product.media');
-  Route::post('product/{product}/media/form/{product_media?}', 'Catalog\ProductMediaController@form')->name('product.media.form');  
+  Route::post('product/{product}/media/form/{product_media?}', 'Catalog\ProductMediaController@form')->name('product.media.form');
+
+  # Product Units
+  Route::any('product/{product}/unit', 'Catalog\ProductUnitController@index')->name('product.unit');
+  Route::post('product/{product}/unit/form/{product_unit?}', 'Catalog\ProductUnitController@form')->name('product.unit.form');  
 
 });
