@@ -21,7 +21,7 @@
         <tr>
           <td class="cbox"><input type="checkbox" name="delete[]" value="{{ $data->unit_id }}"></td>
           <td>
-            <a href="{{ route('catalog.product.unit.form', ['product' => $data->product_id, 'unit' => $data->unit_id]) }}" class="btn-form">{{ $data->name }}</a>
+            <a href="{{ route('catalog.product.unit.form', ['product' => $data->product_id, 'product_unit' => $data->unit_id]) }}" class="btn-form">{{ $data->code }}</a>
           </td>
           <td>
             {{ $data->unit }}

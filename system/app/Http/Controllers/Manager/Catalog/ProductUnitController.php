@@ -27,7 +27,7 @@ class ProductUnitController extends BaseController {
 
     $this->content += [
       'page' => 'Product Unit',
-      'list' => ProductUnitQuery::all($product->product_id),
+      'list' => ProductUnitQuery::all(['product_id' => $product->product_id]),
       'product' => $product
     ];
 
@@ -37,6 +37,7 @@ class ProductUnitController extends BaseController {
 
   public function form(Product $product, ProductUnit $unit = null) {
 
+    dump($unit);
     if (!$unit->exists) {
       $unit->product_id = $product->product_id;
     }
@@ -52,9 +53,8 @@ class ProductUnitController extends BaseController {
 
   }
 
-  private function save(ProductUnit $media) {
+  private function save(ProductUnit $unit) {
 
-    $errors = [];
     $r = $this->request;
 
     # skip if request not saving
@@ -62,73 +62,37 @@ class ProductUnitController extends BaseController {
       return;
     }
 
-    $media->sort_order = (int) $r->sort_order;
-    $media->type = $r->type;
+    $unit->code = $r->code;
+    $unit->unit = $r->unit;
+    $unit->price = $r->price;
+    $unit->status = $r->status;
 
-    # process image
-    if ($media->type == 'image') {
-
-      if (!$r->hasFile('image')) {
-        $errors[] = 'Please upload an image';
-      }
-      else {
-        # Uploading
-        $img = $r->file('image');
-        $img_val = current(explode('.', $img->getClientOriginalName()));
-        $img_ext = $img->extension();
-
-        $path = public_path('uploads/product') . '/' . str_slug($img_val) . '.' . $img_ext;
-        $link = url('uploads/product') . '/' . str_slug($img_val) . '.' . $img_ext;
-
-        $image = Image::make($img);
-        $image->fit(640, 360); # 16:9
-        $image->save($path);
-
-        # remove old file
-        @unlink(public_path('uploads/product') . '/' . $media->name);
-
-        $media->name = str_slug($img_val) . '.' . $img_ext;
-        $media->path = $link;
-      }
-
+    if ($unit->exists) {
+      $rules = [
+        'code' => 'required|unique:product_units,code,' . $unit->code . ',code',
+      ];
     }
-    # process youtube video
     else {
-
-      # check if youtube code is filled
-      if ($r->name == '') {
-        $errors[] = 'Please copy paste youtube video code';
-      }
-      else {
-        $media->name = $r->name;
-
-        # check if youtube code is valid
-        $youtube = 'https://www.youtube.com/watch?v=' . $r->name;
-        $curl = curl_init($youtube);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-        $result = curl_exec($curl);
-        $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-        curl_close($curl);
-        
-        if ($httpcode != 200) {
-          $errors[] = 'Invalid youtube code';
-        }
-        else {
-          $media->path = $youtube;
-        }
-      }
+      $rules = [
+        'code' => 'required|unique:product_units',
+      ];
     }
 
-    if (!empty($errors)) {
-      $this->content['errors'] = new MessageBag($errors);
+    $rules += [
+      'unit' => 'required|numeric',
+      'price' => 'required|numeric'
+    ];
+
+    $validator = Validator::make($r->all(), $rules);
+
+    if ($validator->fails()) {
+      $this->content['errors'] = $validator->messages();
     }
     else {
 
-      if ($media->save()) {
+      if ($unit->save()) {
         $this->content['infos'] = new MessageBag(['Data saved']);
-        $media = new ProductUnit;
+        $unit = new ProductUnit;
       }
 
     }

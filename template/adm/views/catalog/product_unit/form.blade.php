@@ -23,7 +23,7 @@ $attr = [
     </div>
 
     <div class="form-group">
-      <label class="col-sm-4 control-label">Unit</label>
+      <label class="col-sm-4 control-label">Unit size</label>
       <div class="col-sm-8">
         <div class="input-group">
           {{ Form::text('unit', null, ['class' => 'form-control']) }}

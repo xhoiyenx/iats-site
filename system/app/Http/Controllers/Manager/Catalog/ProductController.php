@@ -42,10 +42,6 @@ class ProductController extends BaseController {
    */
   public function form(Product $product = null) {
 
-    if (!$product) {
-      $product = new Product;
-    }
-
     $this->content += [
       'form' => $product,
       'articles' => ArticleQuery::lists(),
@@ -81,6 +77,7 @@ class ProductController extends BaseController {
     $product->article_id = $r->article_id;
     $product->brand_id = $r->brand_id;
     $product->color_id = $r->color_id;
+    $product->status = $r->status;
 
     # set validation rules
     if ($product->exists) {

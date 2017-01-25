@@ -27,7 +27,7 @@ class ProductMediaController extends BaseController {
 
     $this->content += [
       'page' => 'Product Media',
-      'list' => ProductMediaQuery::all($product->product_id),
+      'list' => ProductMediaQuery::all(['product_id' => $product->product_id]),
       'product' => $product
     ];
 
