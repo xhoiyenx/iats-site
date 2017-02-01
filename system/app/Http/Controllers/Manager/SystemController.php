@@ -7,13 +7,52 @@ use Illuminate\Database\Schema\Blueprint;
 class SystemController extends Controller {
 
   public function install() {
+    /*
     $this->managers();
     $this->member();
     $this->posts();
     $this->payment_methods();
     $this->products();
     $this->product_media();
-    
+    */
+    $this->blogs();
+  }
+
+  public function blogs() {
+
+    # blog
+    ########################################
+    Schema::dropIfExists('blogs');
+    Schema::create('blogs', function(Blueprint $table) {
+
+      $table->increments('blog_id');
+      $table->text('title');
+      $table->text('description');
+      $table->text('image');
+      $table->string('status', 25)->default('published');
+      $table->timestamps();
+
+    });
+
+    # post tags
+    ########################################
+    Schema::dropIfExists('blog_tags');
+    Schema::create('blog_tags', function(Blueprint $table) {
+
+      $table->bigIncrements('tag_id');
+      $table->string('description', 100);
+
+    });
+
+    # post tags relation
+    ########################################
+    Schema::dropIfExists('blog_tag_relation');
+    Schema::create('blog_tag_relation', function(Blueprint $table) {
+
+      $table->bigInteger('blog_id');
+      $table->bigInteger('tag_id');
+
+    });
   }
 
   public function member()

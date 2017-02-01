@@ -1,4 +1,7 @@
 <ul class="nav nav-pills nav-stacked nav-quirk">
+  <li class="{!! is_active(['blog.index', 'blog.create'], 'active') !!}">
+    <a href="{{ route('blog.index') }}"><i class="fa fa-list"></i> <span>Blog</span></a>
+  </li>
   <li>
     <a href="{{ route('post::index') }}"><i class="fa fa-list"></i> <span>Post</span></a>
   </li>

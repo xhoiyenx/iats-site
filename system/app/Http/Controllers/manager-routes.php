@@ -33,6 +33,17 @@ Route::group(['prefix' => 'post', 'as' => 'post::'], function() {
   Route::post('save', 'Post\PostController@save')->name('save');
 });
 
+# BLOG
+#####################################
+# 1. Blog list
+# 2. Blog create
+# 3. Blog update
+# 4. Blog delete
+Route::group(['prefix' => 'blog', 'as' => 'blog.'], function() {
+  Route::any('/', 'Blog\BlogController@index')->name('index');
+  Route::get('create', 'Blog\BlogController@create')->name('create');
+});
+
 # MEMBER
 #####################################
 # 1. Member list

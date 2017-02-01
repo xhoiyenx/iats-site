@@ -37,7 +37,6 @@ class ProductUnitController extends BaseController {
 
   public function form(Product $product, ProductUnit $unit = null) {
 
-    dump($unit);
     if (!$unit->exists) {
       $unit->product_id = $product->product_id;
     }
@@ -50,7 +49,7 @@ class ProductUnitController extends BaseController {
     $this->save($unit);
 
     return view('catalog.product_unit.form', $this->content);
-
+    
   }
 
   private function save(ProductUnit $unit) {
