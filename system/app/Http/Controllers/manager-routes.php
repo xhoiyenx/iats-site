@@ -2,6 +2,9 @@
 # System install
 Route::get('install', 'SystemController@install');
 
+# System upload
+Route::any('upload', 'SystemController@upload')->name('upload');
+
 # ADMIN Login
 Route::any('login', 'AuthController@login')->name('login');
 
@@ -42,6 +45,7 @@ Route::group(['prefix' => 'post', 'as' => 'post::'], function() {
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function() {
   Route::any('/', 'Blog\BlogController@index')->name('index');
   Route::get('create', 'Blog\BlogController@create')->name('create');
+  Route::post('save', 'Blog\BlogController@save')->name('save');
 });
 
 # MEMBER

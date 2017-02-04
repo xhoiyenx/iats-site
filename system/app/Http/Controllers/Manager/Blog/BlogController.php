@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Manager\Blog;
 
 use App\Http\Controllers\Manager\Controller;
 
+use DB;
 use Model\Blog;
 use Model\BlogQuery;
 
@@ -55,7 +56,25 @@ class BlogController extends Controller {
    * Post save
    */
   public function save() {
+    $r = $this->request;
+
+    $this->validate($this->request, [
+      'title' => 'required'
+    ]);
+
+    $blog = Blog::findOrNew($r->blog_id);
+    $blog->title = $r->title;
+    $blog->description = $r->description;
+
+    DB::beginTransaction();
+    if (!empty($r->tags)) {
+      foreach ($r->tags) {
+        
+      }
+    }
+    DB::commit();
     
+
   }  
 
 }

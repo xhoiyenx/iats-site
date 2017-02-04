@@ -65,16 +65,16 @@ function cbPermissions( $name, $data = [] )
 
 function redactor( $name )
 {
-  ?><script src="/public/manager/assets/lib/redactor/redactor.min.js"></script>
-  <script src="/public/manager/assets/lib/redactor/plugins.js"></script>
+  ?><script src="/template/adm/assets/lib/redactor/redactor.min.js"></script>
+  <script src="/template/adm/assets/lib/redactor/plugins.js"></script>
   <script type="text/javascript">
   $(document).ready(function() {
     $('textarea[name=<?php echo $name?>]').redactor({
       minHeight: 200,
-      imageUpload: '/manager/media/upload/image',
+      imageUpload: '/manager/upload',
       imageUploadParam: 'redactor-image',
-      fileUpload: '/manager/media/upload/file',
-      fileUploadParam: 'redactor-file',
+      //fileUpload: '/manager/upload',
+      //fileUploadParam: 'redactor-file',
       plugins: ['imagemanager', 'fullscreen']
     });
   });

@@ -1,8 +1,14 @@
+<?php
+$attr = [
+  'route' => 'blog.save',
+  'files' => true
+];
+?>
 @extends('inc.master')
 @section('title', $page)
 @section('content')
-{{ Form::model($form, ['route' => 'post::save']) }}
-{{ Form::hidden('post_id', $form->post_id) }}
+{{ Form::model($form, $attr) }}
+{{ Form::hidden('blog_id', $form->blog_id) }}
 <h1 class="manager-title clearfix">
   <i class="fa fa-fw fa-file-o"></i>{{ $page or '' }}
   <div class="btn-toolbar pull-right">
@@ -19,13 +25,18 @@
     </div>
 
     <div class="form-group">
-      {{ Form::textarea('page_desc', null, ['class' => 'form-control', 'rows' => 4]) }}
-      {!! redactor('page_desc') !!}
+      {{ Form::textarea('description', null, ['class' => 'form-control', 'rows' => 4]) }}
+      {!! redactor('description') !!}
     </div>
 
     <div class="form-group">
+      <label>Tags: </label>
+      {{ Form::select('tags[]', [], null, ['class' => 'form-control select-tags', 'style' => 'width: 100%', 'multiple' => 'multiple']) }}
+    </div>        
+
+    <div class="form-group">
       <label>Status: </label>
-      {{ Form::select('status', ['active' => 'Active', 'blocked' => 'Blocked'], $form->status, ['class' => 'form-control', 'style' => 'width: 100%']) }}
+      {{ Form::select('status', ['draft' => 'Draft', 'published' => 'Published'], $form->status, ['class' => 'form-control', 'style' => 'width: 100%']) }}
     </div>    
 
   </div>
@@ -37,11 +48,25 @@
         <h4 class="panel-title">Image</h4>
       </div>
       <div class="panel-body">
-        <img class="img-responsive" src="{{ $assets . '/images/image.jpg' }}">
+        <img class="img-responsive mb15 preview" src="{{ $assets . '/images/image.jpg' }}">
+        {{ Form::file('image', ['id' => 'image']) }}
       </div>
     </div>
 
   </div>
 </div>
 {{ Form::close() }}
+<script type="text/javascript">
+
+  // Show image preview
+  $('#image').change(function(event) {
+    if (this.files && this.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('.preview').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(this.files[0]);
+    }
+  });
+</script>
 @endsection

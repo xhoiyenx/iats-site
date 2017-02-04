@@ -305,6 +305,8 @@ $(document).ready(function() {
    * INIT SELECT2
    */
   $('select').select2();
+  $(".select-tags").select2({ tags: true, tokenSeparators: [' '] });
+
 
   /**
    * Bind checkall checkbox

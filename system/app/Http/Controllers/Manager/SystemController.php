@@ -1,10 +1,46 @@
 <?php
 namespace App\Http\Controllers\Manager;
 
+use Image;
 use Schema;
+use Illuminate\Http\Request;
 use Illuminate\Database\Schema\Blueprint;
 
 class SystemController extends Controller {
+
+  /**
+   * Redactor image / file uploader
+   */
+  public function upload(Request $request) {
+    $path = public_path('uploads/blog');
+    $link = url('uploads/blog');
+    if ($request->hasFile('redactor-image')) {
+
+      $img = $request->file('redactor-image');
+      $ext = $img->extension();
+
+      $filename = time() . '.' . $ext;
+
+      $image = Image::make($img);
+
+      if ($image->width() > 1400) {
+        $image->resize(1400, null, function ($constraint) {
+          $constraint->aspectRatio();
+        });
+      }
+      
+      $image->save($path . '/' . $filename);
+
+      // displaying file
+      $array = [
+        'filelink' => $link . '/' . $filename,
+      ];
+
+      echo stripslashes(json_encode($array));      
+
+    }
+    exit;
+  }
 
   public function install() {
     /*
@@ -49,6 +85,7 @@ class SystemController extends Controller {
     Schema::dropIfExists('blog_tag_relation');
     Schema::create('blog_tag_relation', function(Blueprint $table) {
 
+      $table->increments('blog_tag_id');
       $table->bigInteger('blog_id');
       $table->bigInteger('tag_id');
 
