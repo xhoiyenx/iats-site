@@ -17,9 +17,9 @@
       @if ( isset($list) )
         @forelse ( $list as $data )
         <tr>
-          <td class="cbox"><input type="checkbox" name="delete[]" value="{{ $data->product_id }}"></td>
+          <td class="cbox"><input type="checkbox" name="delete[]" value="{{ $data->blog_id }}"></td>
           <td>
-            <a href="{{ route('catalog.product.form', $data->product_id) }}" class="btn-form">{{ $data->code }}</a>
+            <a href="{{ route('blog.update', $data->blog_id) }}">{{ $data->title }}</a>
           </td>
         </tr>
         @empty

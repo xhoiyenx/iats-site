@@ -21,17 +21,25 @@ $attr = [
   <div class="col-md-9">
 
     <div class="form-group">
+      <label>Title: </label>
       {{ Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) }}
     </div>
 
     <div class="form-group">
+      <label>Content: </label>
       {{ Form::textarea('description', null, ['class' => 'form-control', 'rows' => 4]) }}
       {!! redactor('description') !!}
     </div>
 
     <div class="form-group">
+      <label>Short description: </label>
+      {{ Form::textarea('short_description', null, ['class' => 'form-control', 'rows' => 4]) }}
+      <p class="help-block">Short description will be shows at blog list / home</p>
+    </div>            
+
+    <div class="form-group">
       <label>Tags: </label>
-      {{ Form::select('tags[]', [], null, ['class' => 'form-control select-tags', 'style' => 'width: 100%', 'multiple' => 'multiple']) }}
+      {{ Form::select('tags[]', $form->tags, null, ['class' => 'form-control select-tags', 'style' => 'width: 100%', 'multiple' => true]) }}
     </div>        
 
     <div class="form-group">
@@ -48,7 +56,9 @@ $attr = [
         <h4 class="panel-title">Image</h4>
       </div>
       <div class="panel-body">
-        <img class="img-responsive mb15 preview" src="{{ $assets . '/images/image.jpg' }}">
+        @if (!empty($form->image))
+        <img class="img-responsive mb15 preview" src="{{ url('uploads/blog') . '/' . $form->image }}">
+        @endif
         {{ Form::file('image', ['id' => 'image']) }}
       </div>
     </div>

@@ -55,7 +55,7 @@ class RouteServiceProvider extends ServiceProvider
          */
         $group = [
             'namespace'     => 'App\Http\Controllers\Web',
-            'as'            => 'www'
+            'as'            => 'www.'
         ];
         $router->group($group, function ($router) {
             require app_path('Http/Controllers/web-routes.php');

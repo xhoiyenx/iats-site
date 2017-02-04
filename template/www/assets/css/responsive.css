@@ -1,0 +1,180 @@
+/**
+ * IATS APPLICATION
+ * By: Hoiyen
+ * Ver: 1.0.0
+ * Last Update: 31/01/2017
+ *
+ * Type:
+ * Stylesheet
+ * 
+ * Description:
+ * Site responsive stylesheet
+ */
+.mobile-menu {
+  width: 245px;
+  height: 100%;
+  position: absolute;
+  top: 2px;
+  right: -245px;
+  background: #85d229;
+}
+.wrap.show-mobile .body {
+  -webkit-transform: translateX(-245px);
+  transform: translateX(-245px);
+}
+.mobile-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mobile-menu a {
+  color: #FFF;
+  padding: 8px 20px;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.mobile-menu a:hover, .mobile-menu ul ul li:hover {
+  background-color: #632c66;
+}
+
+.mobile-menu li.have-submenu a > span {
+  position: relative;
+}
+
+.mobile-menu li.have-submenu a > span:after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 4px;
+  width: 13px;
+  height: 13px;
+  background: url('../images/arrow-down-white.png') no-repeat center top;
+}
+
+.mobile-menu ul ul li {
+  padding: 0 10px;
+}
+
+.mobile-menu > ul > li {
+}
+.mobile-menu > ul > li > a {
+}
+.mobile-menu ul ul {
+  display: none;
+  background-color: #599712;
+}
+.cms-menu {
+  margin-bottom: 20px;
+}
+.cms-menu .selector {
+  padding: 5px 10px;
+  border: 1px solid #b7b7b7;
+  border-radius: 6px;
+  background: url('../images/arrow-down-black.png') no-repeat 96% center;
+  cursor: pointer;
+}
+/**
+ * below desktop
+ */
+@media (max-width:979px) {
+  .toggle-nav {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -23px;
+  }
+  .main-menu, .header-links {
+    display: none;
+  }
+  .page-title {
+    bottom: 0;
+    font-size: 40px;
+  }
+  .fb-button a {
+    margin: 0;
+  }
+  .fb-button a img {
+    margin-bottom: 5px;
+  }
+  footer {
+    text-align: center;
+  }
+  footer ul > li.addr, footer ul > li.phone, footer ul > li.mail {
+    background: none;
+  }
+  footer ul > li.addr img, footer ul > li.phone img, footer ul > li.mail img {
+    display: inline;
+  }
+  footer .subscribe {
+    margin: 0 0 100px 0;
+    padding: 0;
+  }
+  footer .subscribe .button {
+    text-align: center;
+  }
+}
+
+/**
+ * below desktop & before mobile
+ */
+@media (min-width: 768px) and (max-width: 979px) {
+  .swiper-slide a > span > span {
+    font-size: 30px;
+    padding: 0 10px 0 10px;
+    width: 75%;
+  }
+  .news-list img {
+    width: 100%;
+  }
+  .home-category a > span {
+    font-size: 12px;
+  }
+  .header-001 {
+    font-size: 24px;
+  }
+  .news-item {
+    max-height: 270px;
+    overflow: hidden;
+  }
+  .news-item h5 {
+    font-size: 16px;
+    min-height: 80px;
+  }
+}
+
+/*
+ * Landscape phone to portrait tablet
+ */
+@media (max-width: 767px) {
+  .swiper-slide a > span > span {
+    font-size: 20px;
+    width: 75%;
+  }
+  .brochure a {
+    font-size: 10px;
+  }
+  .news-list img {
+    width: 100%;
+  }  
+}
+
+/**
+ * Phones and below
+ */
+@media (max-width:480px) {
+  .header-001 {
+    font-size: 18px;
+  }
+  .header-002 {
+    font-size: 26px;
+  }
+  .swiper-container {
+    margin-bottom: 15px;
+  }
+  .swiper-slide a > span > span {
+    font-size: 12px;
+    width: 70%;
+    position: absolute;
+  }  
+}

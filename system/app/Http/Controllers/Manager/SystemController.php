@@ -64,6 +64,7 @@ class SystemController extends Controller {
       $table->increments('blog_id');
       $table->text('title');
       $table->text('description');
+      $table->text('short_description');
       $table->text('image');
       $table->string('status', 25)->default('published');
       $table->timestamps();

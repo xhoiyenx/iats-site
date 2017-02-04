@@ -7,7 +7,6 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-  use ValidatesRequests;
   
   protected $request;
   protected $content = []; # can be used for chained data view;

@@ -45,6 +45,7 @@ Route::group(['prefix' => 'post', 'as' => 'post::'], function() {
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function() {
   Route::any('/', 'Blog\BlogController@index')->name('index');
   Route::get('create', 'Blog\BlogController@create')->name('create');
+  Route::get('{id}/update', 'Blog\BlogController@update')->name('update');
   Route::post('save', 'Blog\BlogController@save')->name('save');
 });
 

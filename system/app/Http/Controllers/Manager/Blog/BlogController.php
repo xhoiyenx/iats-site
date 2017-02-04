@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Manager\Blog;
 use App\Http\Controllers\Manager\Controller;
 
 use DB;
+use Image;
 use Model\Blog;
 use Model\BlogQuery;
+use Model\BlogTag;
 
 class BlogController extends Controller {
 
@@ -41,14 +43,16 @@ class BlogController extends Controller {
   /**
    * Post update
    */
-  public function update(Post $post) {
+  public function update($id) {
+
+    $blog = Blog::findOrFail($id);
     
     $view = [
-      'page' => 'Update Post',
-      'form' => $post
+      'page' => 'Update Blog',
+      'form' => $blog
     ];
 
-    return view('posts.form', $view);
+    return view('blogs.form', $view);
 
   }
 
@@ -56,6 +60,7 @@ class BlogController extends Controller {
    * Post save
    */
   public function save() {
+
     $r = $this->request;
 
     $this->validate($this->request, [
@@ -65,15 +70,49 @@ class BlogController extends Controller {
     $blog = Blog::findOrNew($r->blog_id);
     $blog->title = $r->title;
     $blog->description = $r->description;
+    $blog->short_description = $r->short_description;
+    $blog->status = $r->status;
 
-    DB::beginTransaction();
+    $tag_ids = [];
     if (!empty($r->tags)) {
-      foreach ($r->tags) {
-        
+      foreach ($r->tags as $desc) {
+        $tag = BlogTag::firstOrCreate(['description' => $desc]);
+        $tag_ids[] = $tag->tag_id;
       }
     }
-    DB::commit();
-    
+
+    # upload images
+    if ($r->hasFile('image')) {
+      $path = public_path('uploads/blog');
+      $link = url('uploads/blog');
+      $img = $r->file('image');
+      $ext = $img->extension();
+
+      $filename = time() . '.' . $ext;
+
+      $image = Image::make($img);
+
+      if ($image->width() > 1400) {
+        $image->resize(1400, null, function ($constraint) {
+          $constraint->aspectRatio();
+        });
+      }
+      
+      $image->save($path . '/' . $filename);
+
+      # delete old file
+      if (!empty($blog->image)) {
+        @unlink($path . '/' . $blog->image);
+      }
+
+      $blog->image = $filename;
+    }
+
+    if ($blog->save()) {
+      $blog->tags()->sync($tag_ids);
+    }
+
+    return back()->with('message', 'Data saved');
 
   }  
 

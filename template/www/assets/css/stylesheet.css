@@ -1,0 +1,182 @@
+/**
+ * IATS APPLICATION
+ * By: Hoiyen
+ * Ver: 1.0.0
+ * Last Update: 31/01/2017
+ *
+ * Type:
+ * Stylesheet
+ * 
+ * Description:
+ * Site responsive stylesheet
+ */
+/* base */
+html, body {
+  min-height: 100%;
+  height: 100%;
+  font-family: "Effra", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 24px;  
+}
+.btn.focus, .btn:focus, .btn:hover {
+  color: #FFF;
+}
+
+/* helpers */
+.mb-20 {
+  margin-bottom: 20px;
+}
+p {
+  margin: 0 0 20px;
+}
+a:active, a:focus {
+  outline: none;
+}
+a:hover, a:active, a:focus {
+  text-decoration: none;
+}
+::-webkit-input-placeholder {
+  font-style: italic;
+}
+:-moz-placeholder {
+  font-style: italic;
+}
+::-moz-placeholder {
+  font-style: italic;
+}
+:-ms-input-placeholder {
+  font-style: italic;
+}
+.wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: auto;
+}
+.body {
+  color: #000;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-transition: .5s ease all;
+  transition: .5s ease all;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+#iats {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  background-color: #000;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+
+header > .container-fluid {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+header .logo {
+  padding-left: 15px;
+}
+
+.header-links {
+  text-align: right;
+  padding-right: 15px;
+}
+
+.header-links a {
+  color: #FFF;
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 46px;
+  margin-left: 40px;
+}
+
+.header-links a:hover {
+  color: #daa765;
+  text-decoration: underline;
+  text-decoration-color: #daa765;
+}
+
+.content {
+  padding-top: 106px;
+}
+
+.posts {
+  padding: 30px 0;
+}
+
+.post {
+  border-bottom: 1px solid #000;
+  margin-bottom: 30px;
+}
+
+.post .avatar {
+  border: 4px solid #daa765;
+  display: inline-block;
+  border-radius: 50%;
+  padding: 1px;
+  margin-right: 20px;
+  float: left;
+}
+
+.post .avatar img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.post .profile {
+  line-height: 1.2em;
+  padding-top: 39px;
+}
+
+.post .profile .post-date {
+
+}
+
+.post .profile .username {
+  margin-left: 5px;
+  font-size: 26px;
+}
+
+.post .profile .location {
+  display: block;
+}
+
+.post .profile .location > .fa {
+  color: #daa765;
+}
+
+.entry-content {
+  padding: 30px 0;
+  padding-bottom: 0px;
+}
+
+.entry-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.entry-content p {
+  font-size: 18px;
+}
+
+.tags {
+  margin-bottom: 20px;
+}
+
+.tags > .tag {
+  background-color: #daa765;
+  padding: 5px 20px;
+  font-weight: 400;
+  font-size: 22px;
+  border-radius: 15px;
+  margin-right: 10px;
+}
