@@ -28,7 +28,7 @@ class ProductQuery {
     return [
       'material'    => 'Material',
       'merchandise' => 'Merchandise',
-      'leather'     => 'Premium Leather',
+      'leather'     => 'Premium Material',
     ];
   }
 

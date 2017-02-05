@@ -96,12 +96,12 @@ header .logo {
   font-size: 26px;
   line-height: 46px;
   margin-left: 40px;
+  padding-bottom: 10px;
 }
 
 .header-links a:hover {
   color: #daa765;
-  text-decoration: underline;
-  text-decoration-color: #daa765;
+  border-bottom: 1px solid #daa765
 }
 
 .content {
@@ -113,7 +113,6 @@ header .logo {
 }
 
 .post {
-  border-bottom: 1px solid #000;
   margin-bottom: 30px;
 }
 
@@ -134,7 +133,6 @@ header .logo {
 
 .post .profile {
   line-height: 1.2em;
-  padding-top: 39px;
 }
 
 .post .profile .post-date {
@@ -148,6 +146,7 @@ header .logo {
 
 .post .profile .location {
   display: block;
+  font-weight: bold;
 }
 
 .post .profile .location > .fa {

@@ -9,21 +9,24 @@
     <div class="post">
       <div class="post-profile row">
         <div class="col-xs-12">
-          <span class="avatar">
-            <a href="#"><img src="{{ $assets }}/images/avatar.png" class="img-fluid"></a>
-          </span>
+          <div class="featured-image">
+            @if (!empty($data->image))
+            <p style="text-align: center;"><a href="{{ route('www.blog', $data->blog_id) }}"><img class="img-responsive" src="{{ url('uploads/blog') . '/' . $data->image }}"></a></p>
+            @endif
+          </div>
           <div class="profile">
-            <span class="username"><strong>Official.IATS</strong></span><br>
             <span class="location">
-              <i class="fa fa-fw fa-map-marker"></i> Alterpro Automotive
+              <span class="post-title">{{ $data->title }}</span>
               <span class="post-date pull-right">{{ $data->created_at->format('d M Y') }}</span>
             </span>
           </div>
           <div class="entry-content">
-            @if (!empty($data->image))
-            <p><a href="{{ route('www.blog', $data->blog_id) }}"><img src="{{ url('uploads/blog') . '/' . $data->image }}"></a></p>
-            @endif
             {!! nl2br($data->short_description) !!}
+          </div>
+          <div class="entry-social" style="margin-bottom: 15px">
+            <div class="fb-share-button" data-href="{{ route('www.blog', $data->blog_id) }}" data-layout="button_count" data-size="large" data-mobile-iframe="true">
+              <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ route('www.blog', $data->blog_id) }}">Share</a>
+            </div>
           </div>
           @if (count($data->tags) > 0)
           <div class="tags">

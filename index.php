@@ -59,3 +59,6 @@ $response = $kernel->handle(
 $response->send();
 
 $kernel->terminate($request, $response);
+
+
+dump(microtime(true) - LARAVEL_START);

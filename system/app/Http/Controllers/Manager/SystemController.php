@@ -43,14 +43,12 @@ class SystemController extends Controller {
   }
 
   public function install() {
-    /*
     $this->managers();
     $this->member();
     $this->posts();
     $this->payment_methods();
     $this->products();
     $this->product_media();
-    */
     $this->blogs();
   }
 

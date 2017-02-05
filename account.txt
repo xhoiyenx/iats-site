@@ -1,0 +1,3 @@
+database: u1975605_iats
+username: u1975605_user
+password: =4*f0e59%?*p

@@ -35,11 +35,17 @@ $attr = [
       <label>Short description: </label>
       {{ Form::textarea('short_description', null, ['class' => 'form-control', 'rows' => 4]) }}
       <p class="help-block">Short description will be shows at blog list / home</p>
-    </div>            
+    </div>
 
     <div class="form-group">
       <label>Tags: </label>
-      {{ Form::select('tags[]', $form->tags, null, ['class' => 'form-control select-tags', 'style' => 'width: 100%', 'multiple' => true]) }}
+      <select name="tags[]" class="form-control select-tags" style="width: 100%" multiple="multiple">
+        @if (count($form->tags) > 0)
+          @foreach($form->tags as $tags)
+          <option value="{{$tags}}" selected="selected">{{$tags}}</option>
+          @endforeach
+        @endif
+      </select>
     </div>        
 
     <div class="form-group">
@@ -58,6 +64,8 @@ $attr = [
       <div class="panel-body">
         @if (!empty($form->image))
         <img class="img-responsive mb15 preview" src="{{ url('uploads/blog') . '/' . $form->image }}">
+        @else
+        <img class="img-responsive mb15 preview">
         @endif
         {{ Form::file('image', ['id' => 'image']) }}
       </div>

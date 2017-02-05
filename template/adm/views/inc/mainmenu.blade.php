@@ -11,11 +11,11 @@
       <li class="{!! is_active(['catalog.product'], 'active ') !!}">
         <a href="{{ route('catalog.product') }}">Products</a>
       </li>
-      <li class="{!! is_active(['catalog.article'], 'active ') !!}">
-        <a href="{{ route('catalog.article') }}">Articles</a>
-      </li>
       <li class="{!! is_active(['catalog.brand'], 'active ') !!}">
         <a href="{{ route('catalog.brand') }}">Brands</a>
+      </li>
+      <li class="{!! is_active(['catalog.article'], 'active ') !!}">
+        <a href="{{ route('catalog.article') }}">Articles</a>
       </li>
       <li class="{!! is_active(['catalog.color'], 'active ') !!}">
         <a href="{{ route('catalog.color') }}">Colors</a>

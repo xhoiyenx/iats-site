@@ -71,6 +71,7 @@ function redactor( $name )
   $(document).ready(function() {
     $('textarea[name=<?php echo $name?>]').redactor({
       minHeight: 200,
+      maxHeight: 400,
       imageUpload: '/manager/upload',
       imageUploadParam: 'redactor-image',
       //fileUpload: '/manager/upload',

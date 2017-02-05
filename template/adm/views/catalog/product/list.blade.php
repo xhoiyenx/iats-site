@@ -11,9 +11,9 @@
         <tr>
           <th class="cbox"><input type="checkbox" class="checkall"></th>
           <th>code</th>
-          <th width="10%">article</th>
-          <th width="10%">brand</th>
-          <th width="10%">color</th>
+          <th width="15%">brand</th>
+          <th width="15%">article</th>
+          <th width="15%">color</th>
         </tr>
       </thead>
       <tbody>
@@ -31,10 +31,10 @@
             </div>
           </td>
           <td>
-            {{ $data->article->name }}
+            {{ $data->brand->name }}
           </td>
           <td>
-            {{ $data->brand->name }}
+            {{ $data->article->name }}
           </td>
           <td>
             {{ $data->color->name }}

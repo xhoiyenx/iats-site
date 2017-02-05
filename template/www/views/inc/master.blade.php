@@ -14,7 +14,7 @@
       @endif
     </title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
-    {{ Html::style( $assets . '/css/font.css') }}
+    {{ Html::style( $assets . '/css/fonts.css') }}
     {{ Html::style( $assets . '/css/font-awesome.min.css') }}
     {{ Html::style( $assets . '/css/bootstrap.min.css') }}
     {{ Html::style( $assets . '/css/stylesheet.css') }}
@@ -160,6 +160,15 @@
 
       </div>
     </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
     {{ Html::script( $assets . '/js/jquery-2.2.4.min.js') }}
     {{ Html::script( $assets . '/js/bootstrap.min.js') }}
     {{ Html::script( $assets . '/js/application.js') }}
