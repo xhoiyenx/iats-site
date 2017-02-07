@@ -1,6 +1,6 @@
 <?php
 $attr = [
-  'route' => ['catalog.product.form', $form->product_id],
+  'route' => ['catalog.product.detail.form', $form->product_id, $form->product_detail_id],
   'class' => 'form-horizontal'
 ];
 ?>
@@ -9,38 +9,36 @@ $attr = [
   <input type="hidden" name="save" value="1">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title">Product {{ $form->code or '' }}</h3>
+    <h4 class="modal-title">Product Detail {{ $form->code or '' }}</h3>
   </div>
   <div class="modal-body">
     @include('inc.messages')
     
     <div class="form-group">
-      <label class="col-sm-4 control-label">Unit Type</label>
+      <label class="col-sm-4 control-label">Code</label>
       <div class="col-sm-8">
-        {{ Form::text('unit_type', null, ['class' => 'form-control']) }}
+        {{ Form::text('code', null, ['class' => 'form-control']) }}
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-sm-4 control-label">Description</label>
+      <label class="col-sm-4 control-label">Base Price</label>
       <div class="col-sm-8">
-        {{ Form::textarea('description', null, ['class' => 'form-control', 'row' => 6]) }}
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="form-group">
-      <label class="col-sm-4 control-label">Brand</label>
-      <div class="col-sm-8">
-        {{ Form::select('brand_id', $brands, null, ['class' => 'form-control', 'style' => 'width:100%']) }}
+        {{ Form::text('base', null, ['class' => 'form-control']) }}
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-sm-4 control-label">Type</label>
+      <label class="col-sm-4 control-label">Article</label>
       <div class="col-sm-8">
-        {{ Form::select('type', $types, null, ['class' => 'form-control', 'style' => 'width:100%']) }}
+        {{ Form::select('article_id', $articles, null, ['class' => 'form-control', 'style' => 'width:100%']) }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 control-label">Color</label>
+      <div class="col-sm-8">
+        {{ Form::select('color_id', $colors, null, ['class' => 'form-control', 'style' => 'width:100%']) }}
       </div>
     </div>
 

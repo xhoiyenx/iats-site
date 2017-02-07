@@ -1,9 +1,9 @@
 @extends('inc.master')
 @section('title', $page)
 @section('content')
-{{ Form::open(['route' => ['catalog.product.unit', $product->product_id]]) }}
+{{ Form::open(['route' => ['catalog.product.unit', $product_detail->product_detail_id]]) }}
 @include('inc.messages')
-@include('inc.toolbar', ['_add_new' => route('catalog.product.unit.form', $product->product_id), '_ajax' => true])
+@include('inc.toolbar', ['_add_new' => route('catalog.product.unit.form', $product_detail->product_detail_id), '_ajax' => true])
 <div class="row">
   <div class="col-md-12">
     <div class="panel">
@@ -21,7 +21,7 @@
         <tr>
           <td class="cbox"><input type="checkbox" name="delete[]" value="{{ $data->unit_id }}"></td>
           <td>
-            <a href="{{ route('catalog.product.unit.form', ['product' => $data->product_id, 'product_unit' => $data->unit_id]) }}" class="btn-form">{{ $data->code }}</a>
+            <a href="{{ route('catalog.product.unit.form', ['product' => $data->product_detail_id, 'product_unit' => $data->unit_id]) }}" class="btn-form">{{ $data->code }}</a>
           </td>
           <td>
             {{ $data->unit }}

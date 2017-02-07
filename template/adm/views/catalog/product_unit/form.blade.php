@@ -1,6 +1,6 @@
 <?php
 $attr = [
-  'route' => ['catalog.product.unit.form', $form->product_id, $form->unit_id],
+  'route' => ['catalog.product.unit.form', $form->product_detail_id, $form->unit_id],
   'class' => 'form-horizontal',
   'files' => true
 ];
@@ -27,7 +27,7 @@ $attr = [
       <div class="col-sm-8">
         <div class="input-group">
           {{ Form::text('unit', null, ['class' => 'form-control']) }}
-          <span class="input-group-addon">{{ $product->unit_type }}</span>
+          <span class="input-group-addon">{{ $product_detail->product->unit_type }}</span>
         </div>
       </div>
     </div>

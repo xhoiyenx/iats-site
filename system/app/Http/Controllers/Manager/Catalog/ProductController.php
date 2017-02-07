@@ -44,9 +44,7 @@ class ProductController extends BaseController {
 
     $this->content += [
       'form' => $product,
-      'articles' => ArticleQuery::lists(),
       'brands' => BrandQuery::lists(),
-      'colors' => ColorQuery::lists(),
       'types' => ProductQuery::types(),
       'statuses' => ProductQuery::statuses(),
     ];
@@ -70,33 +68,15 @@ class ProductController extends BaseController {
     }
 
     # assign values to model
-    $product->code = $r->code;
+    $product->description = $r->description;
     $product->type = $r->type;
-    $product->base = $r->base;
     $product->unit_type = $r->unit_type;
-    $product->article_id = $r->article_id;
     $product->brand_id = $r->brand_id;
-    $product->color_id = $r->color_id;
     $product->status = $r->status;
 
-    # set validation rules
-    if ($product->exists) {
-      $rules = [
-        'code' => 'required|unique:products,code,' . $product->product_id . ',product_id',
-      ];
-    }
-    else {
-      $rules = [
-        'code' => 'required|unique:products',
-      ];
-    }
-
-    $rules += [
-      'base' => 'required|numeric',
+    $rules = [
       'unit_type' => 'required',
-      'article_id'  => 'required',
       'brand_id'    => 'required',
-      'color_id'    => 'required'
     ];
 
     $validator = Validator::make($r->all(), $rules);

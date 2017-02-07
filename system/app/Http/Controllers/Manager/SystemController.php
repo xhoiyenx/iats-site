@@ -43,13 +43,13 @@ class SystemController extends Controller {
   }
 
   public function install() {
-    $this->managers();
-    $this->member();
-    $this->posts();
-    $this->payment_methods();
+    #$this->managers();
+    #$this->member();
+    #$this->posts();
+    #$this->payment_methods();
     $this->products();
-    $this->product_media();
-    $this->blogs();
+    #$this->product_media();
+    #$this->blogs();
   }
 
   public function blogs() {
@@ -117,6 +117,7 @@ class SystemController extends Controller {
     Schema::dropIfExists('products');
     Schema::create('products', function(Blueprint $table) {
 
+      /*
       $table->increments('product_id');
       $table->string('code', 50);
       $table->string('type', 20);
@@ -128,6 +129,30 @@ class SystemController extends Controller {
       $table->integer('color_id')->nullable();
       $table->string('status', 20)->default('active');
       $table->timestamps();
+      */
+     
+      $table->increments('product_id');
+      $table->text('description')->nullable();
+      $table->integer('brand_id')->nullable();
+      $table->string('type', 20);
+      $table->double('unit', 10, 4)->nullable();
+      $table->string('unit_type', 20);
+      $table->string('status', 20)->default('active');
+      $table->timestamps();     
+
+    });
+
+    Schema::dropIfExists('product_details');
+    Schema::create('product_details', function(Blueprint $table) {
+
+      $table->increments('product_detail_id');
+      $table->integer('product_id');
+      $table->string('code', 50);
+      $table->integer('base')->default(0);
+      $table->integer('article_id')->nullable();
+      $table->integer('color_id')->nullable();
+      $table->string('status', 20)->default('active');
+      $table->timestamps();     
 
     });
 
@@ -135,7 +160,7 @@ class SystemController extends Controller {
     Schema::create('product_units', function(Blueprint $table) {
 
       $table->increments('unit_id');
-      $table->integer('product_id');
+      $table->integer('product_detail_id');
       $table->integer('price')->default(0);
       $table->string('code', 50)->unique();
       $table->double('unit', 10, 4)->nullable();
@@ -143,6 +168,7 @@ class SystemController extends Controller {
 
     });
 
+    /*
     Schema::dropIfExists('articles');
     Schema::create('articles', function(Blueprint $table) {
 
@@ -169,6 +195,7 @@ class SystemController extends Controller {
       $table->timestamps();
 
     });
+    */
 
   }
 

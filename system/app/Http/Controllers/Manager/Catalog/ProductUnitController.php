@@ -5,6 +5,8 @@ use Image;
 use Validator;
 use Model\Product;
 use Model\ProductQuery;
+use Model\ProductDetail;
+use Model\ProductDetailQuery;
 use Model\ProductUnit;
 use Model\ProductUnitQuery;
 use Illuminate\Support\MessageBag;
@@ -12,7 +14,7 @@ use App\Http\Controllers\Manager\Controller as BaseController;
 
 class ProductUnitController extends BaseController {
 
-  public function index(Product $product) {
+  public function index(ProductDetail $product_detail) {
 
     # delete request
     if ( $this->request->delete ) {
@@ -27,23 +29,23 @@ class ProductUnitController extends BaseController {
 
     $this->content += [
       'page' => 'Product Unit',
-      'list' => ProductUnitQuery::all(['product_id' => $product->product_id]),
-      'product' => $product
+      'list' => ProductUnitQuery::all(['product_detail_id' => $product_detail->product_detail_id]),
+      'product_detail' => $product_detail
     ];
 
     return view('catalog.product_unit.list', $this->content);
 
   }
 
-  public function form(Product $product, ProductUnit $unit = null) {
+  public function form(ProductDetail $product_detail, ProductUnit $unit = null) {
 
     if (!$unit->exists) {
-      $unit->product_id = $product->product_id;
+      $unit->product_detail_id = $product_detail->product_detail_id;
     }
 
     $this->content += [
       'form' => $unit,
-      'product' => $product
+      'product_detail' => $product_detail
     ];
 
     $this->save($unit);

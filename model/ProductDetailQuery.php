@@ -1,7 +1,7 @@
 <?php
 namespace Model;
 
-class ProductUnitQuery {
+class ProductDetailQuery {
 
   /**
    * Show list
@@ -10,12 +10,12 @@ class ProductUnitQuery {
    */
   public static function all( $params = [], $limit = 20 ) {
 
-    $data = ProductUnit::query();
+    $data = ProductDetail::query();
     # default sort
-    $data->orderBy('unit');
+    $data->orderBy('product_detail_id');
 
-    if ( isset($params['product_detail_id']) ) {
-      $data->where('product_detail_id', $params['product_detail_id']);
+    if ( isset($params['product_id']) ) {
+      $data->where('product_id', $params['product_id']);
     }
 
     if ( $limit == '-1' ) {

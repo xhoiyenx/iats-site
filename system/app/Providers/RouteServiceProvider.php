@@ -18,6 +18,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('brand', 'Model\Brand');
         $router->model('color', 'Model\Color');
         $router->model('product', 'Model\Product');
+        $router->model('product_detail', 'Model\ProductDetail');
         $router->model('product_media', 'Model\ProductMedia');
         $router->model('product_unit', 'Model\ProductUnit');
         $router->model('manager', 'Model\Manager');
