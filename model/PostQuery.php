@@ -12,7 +12,7 @@ class PostQuery {
 
     $data = Post::query();
     # default sort
-    $data->orderBy('id');
+    $data->orderBy('created_at');
     if ( $limit == '-1' ) {
       $list = $data->get();
     }

@@ -29,7 +29,8 @@ class Controller extends BaseController
       'except' => [
         'login',
         'logout',
-        'install'
+        'install',
+        'upgrade'
       ]
     ]);
 

@@ -6,6 +6,7 @@ class Place extends Model {
   
   protected $primaryKey = 'place_id';
   public $timestamps = false;
+  protected $fillable = ['google_id'];
 
   public function post()
   {

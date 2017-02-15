@@ -6,6 +6,7 @@ class PostTag extends Model {
 
   protected $table = 'post_tags';
   protected $primaryKey = 'tag_id';
+  protected $fillable = ['description'];
   public $timestamps = false;
 
   /**
@@ -13,7 +14,7 @@ class PostTag extends Model {
    */
   public function posts()
   {
-    return $this->belongsToMany('Model\Post', 'post_tag_relation');
+    return $this->belongsToMany('Model\Post', 'post_tag_relation', 'tag_id', 'post_id');
   }
 
 }

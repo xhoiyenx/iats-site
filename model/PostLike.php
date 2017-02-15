@@ -6,6 +6,7 @@ class PostLike extends Model {
 
   protected $table = 'post_likes';
   protected $primaryKey = 'like_id';
+  protected $fillable = ['member_id'];
 
   public function member()
   {

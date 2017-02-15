@@ -1,6 +1,7 @@
 <?php
 # System install
 Route::get('install', 'SystemController@install');
+Route::get('upgrade', 'SystemController@upgrade');
 
 # System upload
 Route::any('upload', 'SystemController@upload')->name('upload');

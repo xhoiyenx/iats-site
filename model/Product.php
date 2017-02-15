@@ -21,4 +21,14 @@ class Product extends Model {
     return $this->hasMany('Model\ProductUnits');
   }
 
+  public function details()
+  {
+    return $this->hasMany('Model\ProductDetail');
+  }
+
+  public function getLowestPrice()
+  {
+    return $this->details()->orderBy('base', 'asc')->first();
+  }
+
 }

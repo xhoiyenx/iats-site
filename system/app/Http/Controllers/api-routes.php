@@ -53,27 +53,32 @@ Route::group($group, function ($router) {
  * API for BLOG
  */
 $group = [
-  'prefix' => 'blog'
+  'prefix' => 'post'
 ];
 Route::group($group, function ($router) {
 
   # BLOG list
-  Route::get('/');
+  Route::get('/', 'PostController@index');
 
   # BLOG like
-  Route::get('like/{blog_id}');
+  Route::get('like/{post}', 'PostController@like');
 
   # BLOG send
-  Route::post('post');
+  Route::post('post', 'PostController@post');
+
+  # POST Detail
+  Route::get('detail/{post}', 'PostController@postDetail');
 
   # COMMENTS
   ############################################
-  # COMMENT detail
-  Route::get('comments/{blog_id}');
+  # COMMENT list of post
+  Route::get('comments/{post}', 'PostController@listComments');
 
   # COMMENT send
-  Route::get('comments/send/{blog_id}');
+  Route::post('comments/send', 'PostController@sendComments');
 
+  # COMMENT details of post
+  Route::get('comments/detail/{post}', 'PostCommentController@getDetail');
 });
 
 /**
@@ -93,6 +98,19 @@ Route::group($group, function ($router) {
 });
 
 /**
+ * API for PRODUCT
+ */
+$group = [
+  'prefix' => 'product'
+];
+Route::group($group, function($router) {
+
+  Route::get('list/{type}', 'ProductController@listByType');
+
+});
+
+
+/**
  * API for search
  */
-Route::get('search');
+Route::get('search/{query}', 'SearchController@index');

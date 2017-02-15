@@ -5,6 +5,8 @@ use Image;
 use Schema;
 use Illuminate\Http\Request;
 use Illuminate\Database\Schema\Blueprint;
+use Model\Post;
+use Model\PostTag;
 
 class SystemController extends Controller {
 
@@ -43,13 +45,24 @@ class SystemController extends Controller {
   }
 
   public function install() {
-    #$this->managers();
-    #$this->member();
-    #$this->posts();
-    #$this->payment_methods();
+    
+    /*
+    $this->managers();
+    $this->member();
+    $this->posts();
+    $this->payment_methods();
     $this->products();
-    #$this->product_media();
-    #$this->blogs();
+    $this->product_media();
+    $this->blogs();
+    */
+
+    $post = Post::find(1);
+    dump($post->tags()->sync([1,2]));
+
+  }
+
+  public function upgrade() {
+    $this->db_upgrade_a();
   }
 
   public function blogs() {
@@ -346,5 +359,12 @@ class SystemController extends Controller {
     ########################################
     Schema::dropIfExists('post_places');
 
+  }
+
+  # UPGRADE VERSION 0.0.2
+  function db_upgrade_a() {
+    Schema::table('members', function ($table) {
+      $table->string('avatar', 200)->after("usercell");
+    });
   }
 }

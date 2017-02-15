@@ -7,6 +7,7 @@ class Member extends Authenticatable {
   protected $primaryKey = 'member_id';
   protected $hidden = ['password'];
   protected $guarded = ['password'];
+  protected $appends = ['avatar_url'];
 
   /**
    * Get the posts for the member.
@@ -39,5 +40,16 @@ class Member extends Authenticatable {
    */
   public function setPasswordAttribute($value) {
     $this->attributes['password'] = md5($value);
+  }
+
+  public function getAvatarUrlAttribute() {
+    $link = url('uploads/avatar');
+    if (empty($this->avatar)) {
+      $avatar = $link . '/avatar.png';
+    }
+    else {
+      $avatar = $link . '/' . $this->avatar;
+    }
+    return $this->attributes['avatar_url'] = $avatar;
   }
 }

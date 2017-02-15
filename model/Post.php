@@ -20,7 +20,7 @@ class Post extends Model {
    */
   public function tags()
   {
-    return $this->belongsToMany('Model\PostTag', 'post_tag_relation');
+    return $this->belongsToMany('Model\PostTag', 'post_tag_relation', 'post_id', 'tag_id');
   }
 
   /**
@@ -36,7 +36,7 @@ class Post extends Model {
    */
   public function place()
   {
-    return $this->hasOne('Model\Place');
+    return $this->belongsTo('Model\Place');
   }
 
   /**
@@ -44,7 +44,7 @@ class Post extends Model {
    */
   public function member()
   {
-    return $this->hasOne('Model\Member');
+    return $this->belongsTo('Model\Member');
   }  
 
 }
