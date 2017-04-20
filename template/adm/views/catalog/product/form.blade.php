@@ -22,6 +22,21 @@ $attr = [
     </div>
 
     <div class="form-group">
+      <label class="col-sm-4 control-label">Featured</label>
+      <div class="col-sm-8">
+        {{ Form::select('featured', ['0' => 'No', '1' => 'Yes'], null, ['class' => 'form-control', 'style' => 'width:100%']) }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 control-label">Short Description</label>
+      <div class="col-sm-8">
+        {{ Form::textarea('short_description', null, ['class' => 'form-control', 'row' => 3]) }}
+      </div>
+    </div>
+
+
+    <div class="form-group">
       <label class="col-sm-4 control-label">Description</label>
       <div class="col-sm-8">
         {{ Form::textarea('description', null, ['class' => 'form-control', 'row' => 6]) }}

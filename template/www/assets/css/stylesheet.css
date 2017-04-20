@@ -16,7 +16,7 @@ html, body {
   height: 100%;
   font-family: "Effra", Helvetica, Arial, sans-serif;
   font-weight: 300;
-  font-size: 24px;  
+  font-size: 18px;  
 }
 .btn.focus, .btn:focus, .btn:hover {
   color: #FFF;
@@ -82,25 +82,33 @@ header > .container-fluid {
 }
 
 header .logo {
-  padding-left: 15px;
+  padding-left: 30px;
 }
 
 .header-links {
   text-align: right;
-  padding-right: 15px;
+  padding-right: 30px;
 }
 
 .header-links a {
   color: #FFF;
   font-weight: 300;
-  font-size: 26px;
+  font-size: 20px;
   line-height: 46px;
   margin-left: 40px;
-  padding-bottom: 10px;
+  padding-bottom: 1px;
 }
 
 .header-links a:hover {
   color: #daa765;
+  border-bottom: none;
+}
+
+.header-links a.active {
+  border-bottom: 1px solid #daa765
+}
+
+.header-links a.active:hover {
   border-bottom: 1px solid #daa765
 }
 
@@ -123,6 +131,11 @@ header .logo {
   padding: 1px;
   margin-right: 20px;
   float: left;
+}
+
+.featured-image img {
+  min-width: 100%;
+  height: auto;
 }
 
 .post .avatar img {
@@ -159,12 +172,17 @@ header .logo {
 }
 
 .entry-content img {
+  min-width: 100%;
   max-width: 100%;
   height: auto;
 }
 
 .entry-content p {
   font-size: 18px;
+}
+
+.entry-social {
+  margin: 15px 0;
 }
 
 .tags {
@@ -175,7 +193,9 @@ header .logo {
   background-color: #daa765;
   padding: 5px 20px;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 16px;
   border-radius: 15px;
   margin-right: 10px;
+  margin-bottom: 6px;
+  display: inline-block;
 }

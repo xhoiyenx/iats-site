@@ -13,7 +13,8 @@ class BlogController extends Controller {
 
     $view = [
       'page' => $blog->title,
-      'data' => $blog
+      'data' => $blog,
+      'list' => Blog::where('status', 'published')->where('type', 'blog')->whereNotIn('blog_id', [$blog->blog_id])->orderBy('updated_at', 'desc')->limit(4)->get()
     ];
 
     return view('blog', $view);

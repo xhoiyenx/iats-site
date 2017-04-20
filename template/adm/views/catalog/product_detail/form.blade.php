@@ -22,9 +22,22 @@ $attr = [
     </div>
 
     <div class="form-group">
-      <label class="col-sm-4 control-label">Base Price</label>
+      <label class="col-sm-4 control-label">Price</label>
       <div class="col-sm-8">
-        {{ Form::text('base', null, ['class' => 'form-control']) }}
+        <div class="input-group">
+          {{ Form::text('base', null, ['class' => 'form-control']) }}
+          <span class="input-group-addon"> / {{ $form->product->unit_type }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 control-label">Current Stock</label>
+      <div class="col-sm-8">
+        <div class="input-group">
+          {{ Form::text('stock', null, ['class' => 'form-control']) }}
+          <span class="input-group-addon">{{ $form->product->unit_type }}</span>
+        </div>
       </div>
     </div>
 

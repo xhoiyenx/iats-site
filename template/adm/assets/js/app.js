@@ -71,4 +71,8 @@ $(document).ready(function() {
     return confirm('Please confirm deleting data!!');
   });
 
+  $('.modal').on('hidden.bs.modal', function (e) {
+    location.reload();
+  });
+
 });

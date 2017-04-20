@@ -1,0 +1,13 @@
+Array
+(
+    [status_code] => 200
+    [status_message] => Veritrans payment notification
+    [transaction_id] => 1125f0f0-29c3-4424-bc48-0e5a03caf377
+    [order_id] => IATS/INV/0317/0004
+    [gross_amount] => 750000.00
+    [payment_type] => bank_transfer
+    [transaction_time] => 2017-03-04 08:08:35
+    [transaction_status] => settlement
+    [permata_va_number] => 8778008734888330
+    [signature_key] => 57559dd31730266e82945bfc792d1d7f12819456b6b24313099c07eaaf3d90dcfbf43e4f2b4bf61c785cfab194a88e588bb0007c45bc511d874879962c2dde6e
+)

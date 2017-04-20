@@ -1,0 +1,59 @@
+Array
+(
+    [customer_details] => Array
+        (
+            [billing_address] => Array
+                (
+                    [address] => Jl Pengukiran 4 No 34
+                    [city] => Jakarta
+                    [country_code] => IDN
+                    [first_name] => Hoiyen
+                    [last_name] => 
+                    [country_code] => 081280927878
+                    [postal_code] => 11240
+                )
+
+            [email] => hoiyen.2000@gmail.com
+            [first_name] => Hoiyen
+            [phone] => 081280927878
+            [shipping_address] => Array
+                (
+                    [address] => Jl Pengukiran 4 No 34
+                    [city] => Jakarta
+                    [country_code] => IDN
+                    [first_name] => Hoiyen
+                    [last_name] => 
+                    [phone] => 081280927878
+                    [postal_code] => 11240
+                )
+
+        )
+
+    [credit_card] => Array
+        (
+            [bank] => bca
+            [channel] => migs
+            [save_card] => 
+            [secure] => 
+        )
+
+    [item_details] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 2
+                    [name] => Alcantara® Pannel 9040
+                    [price] => 85950000
+                    [quantity] => 1
+                )
+
+        )
+
+    [transaction_details] => Array
+        (
+            [gross_amount] => 85950000
+            [order_id] => IATS/INV/0317/0001
+        )
+
+    [user_id] => b25eb5e9-675e-4186-97c7-38e73489ddc2
+)

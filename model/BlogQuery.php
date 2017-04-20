@@ -8,11 +8,12 @@ class BlogQuery {
    * @param  integer $limit data limit per page
    * @return [Collection]
    */
-  public static function all( $limit = 20 ) {
+  public static function all( $type = 'blog', $limit = 20 ) {
 
     $data = Blog::query();
     # default sort
     $data->orderBy('created_at', 'desc');
+    $data->where('type', $type);
     if ( $limit == '-1' ) {
       $list = $data->get();
     }

@@ -29,6 +29,8 @@ class ProductQuery {
       'material'    => 'Material',
       'merchandise' => 'Merchandise',
       'leather'     => 'Premium Material',
+      'sniats'      => 'SNIATS',
+      'partner'      => 'Associate Partner',
     ];
   }
 

@@ -15,6 +15,7 @@ class UserController extends Controller {
 
     $username = $this->request->get('username', '');
     $password = $this->request->get('password', '');
+    $fcm_token = $this->request->get('fcm_token', '');
 
     $member = MemberQuery::getByUsernamePassword($username, $password);
     if (is_null($member)) {
@@ -24,6 +25,8 @@ class UserController extends Controller {
       return response()->json($response, 403);
     }
     else {
+      $member->fcm_token = $fcm_token;
+      $member->save();
       return response()->json($member->toArray());
     }
 
@@ -105,6 +108,16 @@ class UserController extends Controller {
       ];
       return response()->json($response, 403);      
     }
+
+  }
+
+  public function online() {
+
+    $query = Member::query();
+
+    $list = $query->where('fcm_token', '!=', null)->get();
+
+    return response()->json(['data' => $list]);
 
   }
 

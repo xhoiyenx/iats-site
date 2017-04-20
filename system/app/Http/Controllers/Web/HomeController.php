@@ -11,10 +11,29 @@ class HomeController extends Controller {
 
     $view = [
       'page' => 'Home',
-      'list' => Blog::where('status', 'published')->orderBy('created_at', 'desc')->get()
+      'list' => Blog::where('status', 'published')->where('type', 'blog')->orderBy('updated_at', 'desc')->get()
     ];
 
     return view('home', $view);
+
+  }
+
+  public function members() {
+
+    $view = [
+      'page' => 'Member List'
+    ];
+
+    return view('members', $view);
+
+  }
+
+  public function about() {
+    $view = [
+      'page' => 'About Us'
+    ];
+
+    return view('about', $view);
 
   }
 

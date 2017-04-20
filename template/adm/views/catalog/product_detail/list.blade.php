@@ -24,9 +24,11 @@
           <td class="cbox"><input type="checkbox" name="delete[]" value="{{ $data->product_detail_id }}"></td>
           <td>
             <a href="{{ route('catalog.product.detail.form', ['product' => $data->product_id, 'detail' => $data->product_detail_id]) }}" class="btn-form">{{ $data->code }}</a>
+            @if ($product->unit_type == 'Sqf' || $product->unit_type == 'Meter')
             <div class="action-block">
               <a href="{{ route('catalog.product.unit', $data->product_detail_id) }}">sizes</a>
             </div>
+            @endif
           </td>
           <td>
             {{ $data->product->brand->name }}

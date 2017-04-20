@@ -50,6 +50,19 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function() {
   Route::post('save', 'Blog\BlogController@save')->name('save');
 });
 
+# BLOG
+#####################################
+# 1. News list
+# 2. News create
+# 3. News update
+# 4. News delete
+Route::group(['prefix' => 'news', 'as' => 'news.'], function() {
+  Route::any('/', 'News\NewsController@index')->name('index');
+  Route::get('create', 'News\NewsController@create')->name('create');
+  Route::get('{id}/update', 'News\NewsController@update')->name('update');
+  Route::post('save', 'News\NewsController@save')->name('save');
+});
+
 # MEMBER
 #####################################
 # 1. Member list

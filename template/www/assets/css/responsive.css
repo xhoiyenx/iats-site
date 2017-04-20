@@ -14,9 +14,9 @@
   width: 245px;
   height: 100%;
   position: absolute;
-  top: 2px;
+  top: 0px;
   right: -245px;
-  background: #85d229;
+  background: #000;
 }
 .wrap.show-mobile .body {
   -webkit-transform: translateX(-245px);
@@ -33,6 +33,7 @@
   display: block;
   text-decoration: none;
   text-transform: uppercase;
+  border-bottom: 1px solid #CCC;
 }
 .mobile-menu a:hover, .mobile-menu ul ul li:hover {
   background-color: #632c66;
@@ -82,7 +83,7 @@
     position: absolute;
     right: 15px;
     top: 50%;
-    margin-top: -23px;
+    margin-top: -11px;
   }
   .main-menu, .header-links {
     display: none;
@@ -163,6 +164,13 @@
  * Phones and below
  */
 @media (max-width:480px) {
+  html, body {
+    font-size: 14px;
+  }
+  .tags > .tag {
+    margin-right: 5px;
+    font-size: 12px;
+  }
   .header-001 {
     font-size: 18px;
   }

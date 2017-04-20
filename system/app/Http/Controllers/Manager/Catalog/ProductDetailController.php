@@ -78,6 +78,7 @@ class ProductDetailController extends BaseController {
     # assign values to model
     $product_detail->code = $r->code;
     $product_detail->base = $r->base;
+    $product_detail->stock = $r->stock;
     $product_detail->article_id = $r->article_id;
     $product_detail->color_id = $r->color_id;
     $product_detail->status = $r->status;

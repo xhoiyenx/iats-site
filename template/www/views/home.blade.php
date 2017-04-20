@@ -17,7 +17,7 @@
           <div class="profile">
             <span class="location">
               <span class="post-title">{{ $data->title }}</span>
-              <span class="post-date pull-right">{{ $data->created_at->format('d M Y') }}</span>
+              <span class="post-date pull-right">{{ $data->updated_at->format('d M Y') }}</span>
             </span>
           </div>
           <div class="entry-content">

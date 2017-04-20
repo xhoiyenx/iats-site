@@ -22,10 +22,13 @@ Route::group($group, function ($router) {
   # USER forgot password
   Route::get('forgot-password', 'UserController@forgotPassword');
 
+  # USER online
+  Route::get('online', 'UserController@online');
+
   # PROFILE
   ############################################
   # USER profile
-  Route::get('profile');
+  Route::get('profile', 'UserProfileController@profile');
 
   # USER update profile
   Route::post('profile/update', 'UserProfileController@update');
@@ -90,10 +93,10 @@ $group = [
 Route::group($group, function ($router) {
 
   # CHAT list
-  Route::get('/');
+  Route::get('/', 'ChatController@index');
 
   # CHAT send
-  Route::get('send');
+  Route::post('send', 'ChatController@send');
 
 });
 
@@ -106,9 +109,26 @@ $group = [
 Route::group($group, function($router) {
 
   Route::get('list/{type}', 'ProductController@listByType');
+  Route::get('detail/{product_id}', 'ProductController@detail');
+  Route::get('info', 'ProductController@info');
+  
+  Route::get('color', 'ProductController@color');
+  Route::get('units', 'ProductController@units');
 
 });
 
+
+/**
+ * Cart
+ */
+Route::get('cart', 'OrderController@cart');
+Route::get('cart/delete/{cart_id}', 'OrderController@deleteCart');
+Route::post('cart/create', 'OrderController@create');
+
+/**
+ * Payments
+ */
+Route::post('checkout/{type}', 'PaymentController@checkout');
 
 /**
  * API for search

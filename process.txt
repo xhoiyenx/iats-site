@@ -1,0 +1,24 @@
+Array
+(
+    [id] => 1
+    [invoice] => IATS/INV/0317/0001
+    [member_id] => 1
+    [billing_first_name] => Hoiyen
+    [billing_last_name] => 
+    [billing_phone] => 081280927878
+    [billing_address] => Jl Pengukiran 4 No 48
+    [billing_city] => Jakarta
+    [billing_zipcode] => 11240
+    [billing_country] => IDN
+    [shipping_first_name] => Hoiyen
+    [shipping_last_name] => 
+    [shipping_phone] => 081280927878
+    [shipping_address] => Jl Pengukiran 4 No 48
+    [shipping_city] => Jakarta
+    [shipping_zipcode] => 11240
+    [shipping_country] => IDN
+    [total] => 85950000
+    [status] => cart
+    [created_at] => 2017-03-03 19:25:13
+    [updated_at] => 2017-03-03 22:53:16
+)

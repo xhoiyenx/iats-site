@@ -13,9 +13,11 @@ class PostController extends Controller {
 
 	public function index($offset = 0) {
 
+		$member = Auth::user();
+
 		$limit = 20;
 		
-		$data = Post::with('place', 'member')->where('status', 'active')->get();
+		$data = Post::with('place', 'member')->where('status', 'active')->orderBy('created_at', 'desc')->get();
 
 		$results = [];
 		if (count($data)) {
@@ -28,6 +30,7 @@ class PostController extends Controller {
 					'location' => $item->place->name,
 					'created_at' => $item->created_at->format('d M Y'),
 					'like_count' => $item->likes->count(),
+					'liked' => $item->likedBy($member->member_id),
 					'comments_count' => $item->comments->count(),
 					'image_url' => url('uploads/post') . '/' . $item->image,
 					'tags' => $item->tags
@@ -58,6 +61,8 @@ class PostController extends Controller {
 		$post->total_likes = $total;
 		$post->save();
 
+		return response()->json(['total_likes' => $total]);
+		
 	}
 
 	public function post() {

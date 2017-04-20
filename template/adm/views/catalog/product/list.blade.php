@@ -11,6 +11,7 @@
         <tr>
           <th class="cbox"><input type="checkbox" class="checkall"></th>
           <th>id</th>
+          <th width="15%">unit type</th>
           <th width="15%">brand</th>
         </tr>
       </thead>
@@ -25,6 +26,9 @@
               <a href="{{ route('catalog.product.media', $data->product_id) }}">media</a>
               | <a href="{{ route('catalog.product.detail', $data->product_id) }}">sub-product</a>
             </div>
+          </td>
+          <td>
+            {{ $data->unit_type }}
           </td>
           <td>
             {{ $data->brand->name }}

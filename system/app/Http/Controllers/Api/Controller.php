@@ -15,7 +15,9 @@ class Controller extends BaseController
       'except' => [
         'login',
         'register',
-        'forgotPassword'
+        'forgotPassword',
+        'payment',
+        'checkout'
       ]
     ]);
   }

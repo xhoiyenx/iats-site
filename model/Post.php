@@ -45,6 +45,13 @@ class Post extends Model {
   public function member()
   {
     return $this->belongsTo('Model\Member');
-  }  
+  }
+
+  /**
+   * Check if current post is liked by a member
+   */
+  public function likedBy($member_id) {
+    return $this->likes()->where('member_id', $member_id)->count();
+  }
 
 }

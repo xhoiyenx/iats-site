@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="hoiyen.2000@gmail.com">
-
+    @stack('head')
     <title>
       @hasSection ('title')
         @yield('title') - IATS
@@ -28,83 +28,16 @@
         <div class="mobile-menu">
           <ul>
             <li>
-              <a href="#"><span>home</span></a>
-            </li>
-            <li class="have-submenu">
-              <a href="#"><span>company</span></a>
-              <ul>
-                <li>
-                  <a href="#">about us</a>
-                </li>
-                <li>
-                  <a href="#">our factory</a>
-                </li>
-                <li>
-                  <a href="#">awards & certification</a>
-                </li>
-              </ul>
-            </li>
-            <!--# submenu-level1 #-->
-            <li class="have-submenu">
-              <a href="#"><span>our products</span></a>
-              <ul>
-                <!--# submenu-level2 #-->
-                <li class="have-subsubmenu">
-                  <a href="#">wellness</a>
-                  <ul>
-                    <li>
-                      <a href="#">beverages</a>
-                    </li>
-                    <li>
-                      <a href="#">royal jelly</a>
-                    </li>
-                    <li>
-                      <a href="#">narish</a>
-                    </li>
-                    <li>
-                      <a href="#">choles balance</a>
-                    </li>
-                    <li>
-                      <a href="#">rhuma ease</a>
-                    </li>
-                  </ul>
-                </li>
-                <!--# submenu-level2 #-->
-                <li>
-                  <a href="#">beauty and health</a>
-                </li>
-                <li>
-                  <a href="#">brain and eye health</a>
-                </li>
-                <li>
-                  <a href="#">gastrointestinal health</a>
-                </li>
-                <li>
-                  <a href="#">healthcare for the young</a>
-                </li>
-              </ul>
-            </li>
-            <!--# submenu-level1 #-->
-            <li>
-              <a href="#"><span>news</span></a>
+              <a href="/"><span>Articles</span></a>
             </li>
             <li>
-              <a href="#"><span>brochures</span></a>
+              <a href="{{ url('press-release') }}"><span>Press Release</span></a>
             </li>
             <li>
-              <a href="#"><span>partner program</span></a>
+              <a href="{{ url('about') }}">About Us</a>
             </li>
             <li>
-              <a href="#"><span>contact us</span></a>
-            </li>
-            <li>
-              <a href="#"><span>login</span></a>
-            </li>
-            <li>
-              <a href="#"><span>sitemap</span></a>
-            </li>
-            <li>
-              <a href="#"><span>faqs</span></a>
+              <a class="faq" href="{{ url('member-list') }}"><span>Member List</span></a>
             </li>
           </ul>
         </div>
@@ -121,12 +54,14 @@
                     <div class="logo">
                       <span class="helper"></span><a href="{{ url('/') }}"><img src="{{ $assets }}/images/logo.png"></a>
                     </div>
+                    <a class="toggle-nav hidden-lg" href="#"><i class="fa fa-fw fa-bars" style="color: #FFF; font-size: 23px"></i></a>
                   </div>
                   <div class="col-md-6">
                     <div class="header-links">
-                      <a class="log" href="#">About</a>
-                      <a class="map" href="#">News</a>
-                      <a class="faq" href="#">Member List</a>
+                      <a class="log {!! is_active(['www.blog', 'www.home'], 'active') !!}" href="/">Articles</a>
+                      <a class="map {!! is_active(['www.news', 'www.news.details'], 'active') !!}" href="{{ url('press-release') }}">Press Release</a>
+                      <a class="{!! is_active(['www.about'], 'active') !!}" href="{{ url('about') }}">About Us</a>
+                      <a class="faq {!! is_active(['www.members'], 'active') !!}" href="{{ url('member-list') }}">Member List</a>
                     </div>
                   </div>
                 </div>

@@ -8,6 +8,11 @@ use Model\MemberQuery;
 
 class UserProfileController extends Controller {
 
+  public function profile() {
+    $member = Auth::user();
+    return response()->json($member);
+  }
+
   /**
    * Update profile
    * @return json status

@@ -1,5 +1,8 @@
 <?php
 namespace Model;
+
+use DB;
+use Model\Article;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model {
@@ -28,7 +31,22 @@ class Product extends Model {
 
   public function getLowestPrice()
   {
-    return $this->details()->orderBy('base', 'asc')->first();
+    if ($this->details->count())
+      return $this->details()->orderBy('base', 'asc')->first();
+    else
+      return null;
+  }
+
+  public function article_list() {
+    $query = $this->details()->groupBy('article_id');
+    $lists = $query->lists('article_id');
+    if (count($lists) > 0) {
+      $ids = [];
+      foreach ($lists as $key => $value) {
+        $ids[] = $value;
+      }
+      return Article::find($ids);
+    }
   }
 
 }

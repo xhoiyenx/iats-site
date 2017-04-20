@@ -1,6 +1,9 @@
 <ul class="nav nav-pills nav-stacked nav-quirk">
-  <li class="{!! is_active(['blog.index', 'blog.create'], 'active') !!}">
-    <a href="{{ route('blog.index') }}"><i class="fa fa-list"></i> <span>Blog</span></a>
+  <li class="{!! is_active(['blog.index', 'blog.create', 'blog.update'], 'active') !!}">
+    <a href="{{ route('blog.index') }}"><i class="fa fa-list"></i> <span>Articles</span></a>
+  </li>
+  <li class="{!! is_active(['news.index', 'news.create', 'news.update'], 'active') !!}">
+    <a href="{{ route('news.index') }}"><i class="fa fa-list"></i> <span>Press Release</span></a>
   </li>
   <li>
     <a href="{{ route('post::index') }}"><i class="fa fa-list"></i> <span>Post</span></a>

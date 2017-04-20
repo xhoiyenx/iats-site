@@ -1,5 +1,8 @@
 @extends('inc.master')
 @section('title', $page)
+@push('head')
+<meta property="og:image" content="{{ url('uploads/blog') . '/' . $data->image }}">
+@endpush
 @section('content')
 
 <div class="posts">
@@ -30,6 +33,31 @@
         @endif
       </div>
     </div>
+    <br>
+    @if (isset($list))
+    <div class="post-profile row">
+      <div class="col-md-12">
+        <h3 style="margin-bottom: 15px;">Related Articles</h3>
+      </div>
+    @foreach ($list as $item)
+      <div class="col-md-3" style="margin-bottom: 20px">
+        <div class="featured-image">
+          @if (!empty($item->image))
+          <p style="text-align: center;"><a href="{{ route('www.blog', $item->blog_id) }}"><img style="height: 154px; width: auto !important" class="img-responsive" src="{{ url('uploads/blog') . '/' . $item->image }}"></a></p>
+          @endif
+        </div>
+        <div class="profile" style="min-height: 43px;">
+          <span class="location">
+            <span class="post-title">{{ $item->title }}</span>
+          </span>
+        </div>
+        <div class="entry-content" style="text-align: justify; padding-top: 0">
+          {!! nl2br($item->short_description) !!}
+        </div>
+      </div>
+    @endforeach
+    </div>
+    @endif
   </div>
 </div>
                     

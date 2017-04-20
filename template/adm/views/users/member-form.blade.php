@@ -18,7 +18,7 @@
 @extends('inc.master')
 @section('title', $page)
 @section('content')
-{{ Form::model($form, ['route' => 'member::save']) }}
+{{ Form::model($form, ['route' => 'member::save', 'files' => true]) }}
 {{ Form::hidden('member_id', $form->member_id) }}
 <h1 class="manager-title clearfix">
   <i class="fa fa-fw fa-file-o"></i>{{ $page or '' }}
@@ -55,4 +55,17 @@
   </div>
 </div>
 {{ Form::close() }}
+<script type="text/javascript">
+
+  // Show image preview
+  $('#image').change(function(event) {
+    if (this.files && this.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('.preview').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(this.files[0]);
+    }
+  });
+</script>
 @endsection
